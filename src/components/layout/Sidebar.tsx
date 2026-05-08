@@ -35,9 +35,9 @@ export default function Sidebar() {
     <aside className="w-[280px] bg-[#0a0a0c] flex flex-col h-screen fixed left-0 top-0 z-[50] overflow-y-auto border-r border-white/5">
       <div className="p-8">
         <div className="flex items-center gap-3 mb-10">
-          <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-black font-black text-lg shadow-lg">S</div>
+          <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-black font-black text-lg shadow-lg">N</div>
           <div>
-            <div className="text-xl font-bold leading-none">Stakent<span className="text-[10px] align-top text-white/40 ml-0.5">®</span></div>
+            <div className="text-xl font-bold leading-none">Nexus<span className="text-[10px] align-top text-white/40 ml-0.5">®</span></div>
             <div className="text-[10px] text-white/30 font-medium tracking-tight mt-1">Top Staking Assets</div>
           </div>
         </div>
@@ -107,7 +107,7 @@ export default function Sidebar() {
               <Zap size={14} className="text-[#a78bfa]" />
               <span className="text-[11px] font-bold text-white/90">Activate Super</span>
             </div>
-            <p className="text-[10px] text-white/30">Unlock all features on Stakent</p>
+            <p className="text-[10px] text-white/30">Unlock all features on Nexus</p>
           </div>
           <div className="absolute top-[-20px] right-[-20px] w-16 h-16 bg-[#8b5cf6]/10 rounded-full blur-xl"></div>
         </button>

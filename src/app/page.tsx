@@ -64,7 +64,7 @@ export default function Dashboard() {
                  <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-lg">
                    <div className="w-4 h-4 rounded-full border-2 border-black"></div>
                  </div>
-                 <span className="text-[14px] font-bold tracking-tight">Stakent<span className="text-[9px] text-white/40 ml-0.5">®</span></span>
+                 <span className="text-[14px] font-bold tracking-tight">Nexus<span className="text-[9px] text-white/40 ml-0.5">®</span></span>
                </div>
                <span className="text-[9px] bg-white text-black px-2 py-0.5 rounded-full font-black uppercase shadow-xl">New</span>
              </div>
