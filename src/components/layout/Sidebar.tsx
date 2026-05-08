@@ -35,16 +35,16 @@ export default function Sidebar() {
     <aside className="w-[280px] bg-[#0a0a0c] flex flex-col h-screen fixed left-0 top-0 z-[50] overflow-y-auto border-r border-white/5">
       <div className="p-8">
         <div className="flex items-center gap-3 mb-10">
-          <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-black font-bold text-lg shadow-lg">N</div>
+          <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-black font-semibold text-lg shadow-lg">N</div>
           <div>
-            <div className="text-xl font-bold leading-none">Nexus<span className="text-[10px] align-top text-white/40 ml-0.5">®</span></div>
+            <div className="text-xl font-semibold leading-none">Nexus<span className="text-[10px] align-top text-white/40 ml-0.5">®</span></div>
             <div className="text-[10px] text-white/30 font-medium tracking-tight mt-1">Top Staking Assets</div>
           </div>
         </div>
 
         <div className="flex bg-[#16161a] p-1 rounded-[14px] mb-8">
-          <button className="flex-1 py-2 text-[11px] font-semibold bg-[#27272a] text-white rounded-[10px] shadow-sm transition-all">Staking</button>
-          <button className="flex-1 py-2 text-[11px] font-semibold text-white/30 hover:text-white/50 transition-colors">Stablecoin</button>
+          <button className="flex-1 py-2 text-[11px] font-medium bg-[#27272a] text-white rounded-[10px] shadow-sm transition-all">Staking</button>
+          <button className="flex-1 py-2 text-[11px] font-medium text-white/30 hover:text-white/50 transition-colors">Stablecoin</button>
         </div>
 
         <nav className="space-y-1 mb-10">
@@ -72,10 +72,10 @@ export default function Sidebar() {
 
         <div className="space-y-5">
           <div className="flex items-center justify-between px-3">
-            <div className="flex items-center gap-2 text-[11px] font-semibold text-white/30 uppercase tracking-widest">
+            <div className="flex items-center gap-2 text-[11px] font-medium text-white/30 uppercase tracking-widest">
               <Layers size={14} />
               Active Staking
-              <span className="bg-[#8b5cf6] text-white w-4 h-4 flex items-center justify-center rounded-full text-[9px] font-bold">6</span>
+              <span className="bg-[#8b5cf6] text-white w-4 h-4 flex items-center justify-center rounded-full text-[9px] font-semibold">6</span>
             </div>
             <ChevronRight size={14} className="text-white/10" />
           </div>

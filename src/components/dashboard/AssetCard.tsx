@@ -25,8 +25,8 @@ export default function AssetCard({ name, symbol, rewardRate, change, isUp, char
              </div>
           </div>
           <div>
-            <p className="text-[10px] text-white/30 uppercase font-bold tracking-widest mb-0.5">Proof of Stake</p>
-            <h4 className="text-[14px] font-semibold text-white/90">{name} ({symbol})</h4>
+            <p className="text-[10px] text-white/30 uppercase font-semibold tracking-widest mb-0.5">Proof of Stake</p>
+            <h4 className="text-[14px] font-medium text-white/90">{name} ({symbol})</h4>
           </div>
         </div>
         <div className="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-white/20 group-hover:text-white group-hover:bg-white/10 transition-all border border-white/5">
@@ -37,10 +37,10 @@ export default function AssetCard({ name, symbol, rewardRate, change, isUp, char
       <div className="z-10">
         <p className="text-[11px] text-white/30 font-medium mb-1">Reward Rate</p>
         <div className="flex items-end gap-2.5">
-          <h3 className="text-3xl font-semibold tracking-tight">{rewardRate}</h3>
+          <h3 className="text-3xl font-medium tracking-tight">{rewardRate}</h3>
           <div className={`flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/[0.03] border border-white/[0.05]`}>
             <div className={`w-1.5 h-1.5 rounded-full ${isUp ? 'bg-[#22c55e]' : 'bg-[#ef4444]'}`}></div>
-            <span className={`text-[10px] font-semibold ${isUp ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>{change}</span>
+            <span className={`text-[10px] font-medium ${isUp ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>{change}</span>
           </div>
         </div>
       </div>
