@@ -1,10 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
-import StatsCard from '@/components/dashboard/StatsCard';
-import AssetTable from '@/components/dashboard/AssetTable';
-import Modal from '@/components/dashboard/Modal';
+import AssetCard from '@/components/dashboard/AssetCard';
 import { 
   AreaChart, 
   Area, 
@@ -15,207 +13,189 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { motion } from 'framer-motion';
-import { Wallet, History, CreditCard, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Clock, Wallet, LayoutGrid, RotateCcw, Maximize2, Filter, ChevronDown, PlayCircle } from 'lucide-react';
 
 const chartData = [
-  { name: 'Mon', value: 400 },
-  { name: 'Tue', value: 300 },
-  { name: 'Wed', value: 900 },
-  { name: 'Thu', value: 700 },
-  { name: 'Fri', value: 500 },
-  { name: 'Sat', value: 800 },
-  { name: 'Sun', value: 600 },
+  { value: 400 }, { value: 300 }, { value: 600 }, { value: 800 }, { value: 500 }, { value: 900 }, { value: 700 }
 ];
 
 export default function Dashboard() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     <DashboardLayout>
-      <div className="max-w-[1400px] mx-auto space-y-8 animate-fade-in">
-        {/* Welcome Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight mb-1">Hello, Sebastian</h1>
-            <p className="text-white/40 text-sm">Here is what&apos;s happening with your network today.</p>
+      <div className="max-w-[1600px] mx-auto space-y-8 animate-fade-in">
+        {/* Top Section */}
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
+          <div className="xl:col-span-3">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <h3 className="text-[13px] font-bold text-white/40">Recommended coins for 24 hours</h3>
+                <Clock size={14} className="text-white/20" />
+                <span className="bg-white/10 px-2 py-0.5 rounded text-[10px] font-bold">3 Assets</span>
+              </div>
+              <div className="flex items-center gap-2">
+                {['24H', 'Proof of Stake', 'Desc'].map((filter) => (
+                  <button key={filter} className="bg-white/5 border border-white/5 px-3 py-1 rounded-lg text-[10px] font-bold text-white/40 hover:text-white flex items-center gap-2">
+                    {filter}
+                    <ChevronDown size={12} />
+                  </button>
+                ))}
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <AssetCard name="Ethereum" symbol="ETH" rewardRate="13.62%" change="6.25%" isUp={true} color="#8b5cf6" chartData={chartData} />
+              <AssetCard name="BNB Chain" symbol="BNB" rewardRate="12.72%" change="5.67%" isUp={true} color="#fbbf24" chartData={chartData.map(d => ({ value: d.value * 0.8 }))} />
+              <AssetCard name="Polygon" symbol="Matic" rewardRate="6.29%" change="1.89%" isUp={false} color="#06b6d4" chartData={chartData.map(d => ({ value: d.value * 1.2 }))} />
+            </div>
           </div>
-          <div className="flex items-center gap-3">
-            <button className="glass px-4 py-2 text-sm font-medium flex items-center gap-2 hover:bg-white/10 transition-colors">
-              <History size={16} />
-              History
-            </button>
-            <button 
-              onClick={() => setIsModalOpen(true)}
-              className="btn-primary px-5 py-2 text-sm flex items-center gap-2"
-            >
-              <Wallet size={16} />
-              Deposit
-            </button>
+
+          <div className="glass p-6 bg-gradient-to-br from-indigo-500/20 via-purple-600/10 to-transparent relative overflow-hidden flex flex-col justify-between">
+             <div className="flex justify-between items-center z-10">
+               <div className="flex items-center gap-2">
+                 <div className="w-6 h-6 rounded-md bg-white flex items-center justify-center">
+                   <div className="w-4 h-4 rounded-full border-2 border-black"></div>
+                 </div>
+                 <span className="text-[12px] font-bold">Stakent<span className="text-[9px] text-white/40">®</span></span>
+               </div>
+               <span className="text-[9px] bg-indigo-500 px-1.5 py-0.5 rounded font-bold uppercase">New</span>
+             </div>
+
+             <div className="z-10 py-6">
+               <h3 className="text-xl font-bold mb-2">Liquid Staking Portfolio</h3>
+               <p className="text-[11px] text-white/50 leading-relaxed max-w-[200px]">
+                 An all-in-one portfolio that helps you make smarter investments into Ethereum Liquid Staking.
+               </p>
+             </div>
+
+             <div className="space-y-2 z-10">
+               <button className="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2">
+                 Connect with Wallet
+                 <Wallet size={14} />
+               </button>
+               <button className="w-full bg-white/5 hover:bg-white/10 text-white/70 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2">
+                 Enter a Wallet Address
+                 <div className="bg-white/10 p-0.5 rounded">🔒</div>
+               </button>
+             </div>
+             
+             {/* Abstract background decorations */}
+             <div className="absolute top-1/2 right-[-20px] w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl"></div>
           </div>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <StatsCard label="Total Portfolio" value="$42,450" change="12.5%" isUp={true} color="nexus-purple" />
-          <StatsCard label="Daily Earnings" value="$124.50" change="2.4%" isUp={true} color="nexus-cyan" />
-          <StatsCard label="Active Nodes" value="12" change="1" isUp={true} color="nexus-pink" />
-          <StatsCard label="Network Uptime" value="99.9%" change="0.2%" isUp={true} color="green-400" />
-        </div>
+        {/* Active Staking Detail Section */}
+        <div className="glass p-8 relative">
+          <div className="flex items-center justify-between mb-8">
+            <h3 className="text-[13px] font-bold text-white/40 uppercase tracking-widest">Your active stakings</h3>
+            <div className="flex items-center gap-4 text-white/30">
+              <RotateCcw size={16} className="cursor-pointer hover:text-white" />
+              <Maximize2 size={16} className="cursor-pointer hover:text-white" />
+              <Filter size={16} className="cursor-pointer hover:text-white" />
+            </div>
+          </div>
 
-        {/* Charts & Portfolio Grid */}
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-          {/* Main Chart Section */}
-          <div className="xl:col-span-2 space-y-8">
-            <div className="glass p-8">
-              <div className="flex items-center justify-between mb-8">
-                <div>
-                  <h3 className="text-lg font-semibold">Yield Performance</h3>
-                  <p className="text-sm text-white/40">Weekly statistics for all active nodes</p>
-                </div>
-                <div className="flex gap-2">
-                  {['1D', '1W', '1M', '1Y'].map((range) => (
-                    <button key={range} className={`px-3 py-1 rounded-lg text-[10px] font-bold ${range === '1W' ? 'bg-nexus-purple text-white' : 'bg-white/5 text-white/30 hover:bg-white/10 transition-colors'}`}>
-                      {range}
-                    </button>
-                  ))}
-                </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div className="lg:col-span-2 space-y-6">
+              <div className="flex items-center gap-4">
+                <span className="text-[11px] text-white/40 font-bold">Last Update — 45 minutes ago</span>
+                <Clock size={12} className="text-white/40" />
               </div>
               
-              <div className="h-[300px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={chartData}>
-                    <defs>
-                      <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.3}/>
-                        <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
-                      </linearGradient>
-                    </defs>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
-                    <XAxis 
-                      dataKey="name" 
-                      axisLine={false} 
-                      tickLine={false} 
-                      tick={{fill: 'rgba(255,255,255,0.3)', fontSize: 10}} 
-                    />
-                    <YAxis hide />
-                    <Tooltip 
-                      contentStyle={{ 
-                        backgroundColor: 'rgba(10, 10, 10, 0.9)', 
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        borderRadius: '12px',
-                        backdropFilter: 'blur(10px)'
-                      }}
-                    />
-                    <Area 
-                      type="monotone" 
-                      dataKey="value" 
-                      stroke="#8b5cf6" 
-                      strokeWidth={3} 
-                      fillOpacity={1} 
-                      fill="url(#chartGradient)" 
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-
-            {/* Asset Table Module */}
-            <AssetTable />
-          </div>
-
-          {/* Sidebar Modules */}
-          <div className="space-y-8">
-            {/* Quick Deposit Widget */}
-            <div className="glass p-8 bg-gradient-to-br from-nexus-purple/10 to-transparent">
-              <h3 className="text-lg font-semibold mb-2">Grow your assets</h3>
-              <p className="text-sm text-white/40 mb-6">Deposit funds and start earning up to 12% APY instantly.</p>
-              <div className="space-y-4">
-                <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] text-white/30 uppercase font-bold tracking-wider">Estimated APY</span>
-                    <span className="text-nexus-cyan font-bold">12.4%</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <ShieldCheck size={14} className="text-green-400" />
-                    <span className="text-[10px] text-green-400/80">Insured by Nexus Protocol</span>
-                  </div>
+              <div className="flex items-center gap-4">
+                <h2 className="text-3xl font-bold">Stake Avalanche (AVAX)</h2>
+                <div className="w-8 h-8 rounded-lg bg-red-500/20 flex items-center justify-center text-red-500">A</div>
+                <div className="flex items-center gap-2 ml-4">
+                  <div className="p-1.5 bg-white/5 rounded-lg text-white/40"><ArrowUpRight size={14} /></div>
+                  <div className="p-1.5 bg-white/5 rounded-lg text-white/40"><Share2 size={14} className="rotate-90" /></div>
                 </div>
-                <button 
-                  onClick={() => setIsModalOpen(true)}
-                  className="w-full py-4 bg-white text-black font-bold rounded-2xl flex items-center justify-center gap-2 hover:bg-white/90 transition-all"
-                >
-                  Get Started
-                  <ArrowRight size={18} />
+                <button className="ml-auto bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-[11px] font-bold hover:bg-white/10 transition-all flex items-center gap-2">
+                  View Profile <ArrowUpRight size={14} />
                 </button>
               </div>
-            </div>
 
-            {/* Security Module */}
-            <div className="glass p-8">
-              <h3 className="text-lg font-semibold mb-6">Security Center</h3>
-              <div className="space-y-4">
+              <div className="flex items-baseline gap-4 py-4">
+                <p className="text-[11px] text-white/40 absolute top-[145px]">Current Reward Balance, AVAX</p>
+                <h1 className="text-[72px] font-bold tracking-tighter leading-none mt-4">31.39686</h1>
+                <div className="flex gap-2">
+                  <button className="bg-indigo-500 hover:bg-indigo-600 px-6 py-2.5 rounded-xl text-xs font-bold transition-all shadow-[0_0_20px_rgba(99,102,241,0.3)]">Upgrade</button>
+                  <button className="bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-2.5 rounded-xl text-xs font-bold transition-all">Unstake</button>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-4 gap-4 mt-8 pt-8 border-t border-white/5">
                 {[
-                  { label: '2FA Authentication', status: 'Enabled', color: 'text-green-400' },
-                  { label: 'Recovery Seed', status: 'Backed Up', color: 'text-green-400' },
-                  { label: 'Withdrawal Lock', status: 'Disabled', color: 'text-red-400' },
+                  { label: 'Momentum', sub: 'Growth dynamics' },
+                  { label: 'General', sub: 'Overview' },
+                  { label: 'Risk', sub: 'Risk assessment' },
+                  { label: 'Reward', sub: 'Expected profit' },
                 ].map((item) => (
-                  <div key={item.label} className="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                    <span className="text-xs text-white/60">{item.label}</span>
-                    <span className={`text-[10px] font-bold ${item.color}`}>{item.status}</span>
+                  <div key={item.label} className="cursor-pointer group">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[12px] font-bold group-hover:text-white transition-colors">{item.label}</span>
+                      <ChevronDown size={14} className="text-white/20" />
+                    </div>
+                    <p className="text-[10px] text-white/30">{item.sub}</p>
                   </div>
                 ))}
               </div>
             </div>
+
+            <div className="relative">
+              <div className="glass p-6 bg-white/[0.02] border-white/10 h-full flex flex-col">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-[14px] font-bold">Investment Period</h3>
+                  <span className="text-[9px] bg-white/5 px-2 py-0.5 rounded text-white/40">6 Month</span>
+                </div>
+                <p className="text-[10px] text-white/30 mb-8 uppercase tracking-widest">Contribution Period (Month)</p>
+                
+                <div className="relative flex-1 flex flex-col justify-center">
+                  <div className="h-[2px] w-full bg-white/10 relative">
+                    <div className="absolute left-[40%] top-1/2 -translate-y-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-[#0a0a0c] shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
+                    <div className="absolute left-[40%] bottom-6 -translate-x-1/2 text-[11px] font-bold bg-white/10 px-3 py-1 rounded-full">4 Month</div>
+                  </div>
+                  
+                  <div className="mt-12 flex justify-center">
+                    <PlayCircle size={32} className="text-white/20 hover:text-white transition-all cursor-pointer" />
+                  </div>
+                </div>
+
+                <div className="absolute right-[-10px] top-4 text-[9px] text-white/20 rotate-90 origin-right">6 Month</div>
+              </div>
+            </div>
           </div>
+        </div>
+
+        {/* Bottom Metrics Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {[
+            { label: 'Staked Tokens Trend', value: '-0.82%', sub: '24H' },
+            { label: 'Price', value: '$41.99', sub: '24H', change: '-1.09%' },
+            { label: 'Staking Ratio', value: '60.6%', sub: '24H' },
+            { label: 'Reward Rate', value: '8.4%', sub: '24H', isChart: true },
+          ].map((metric) => (
+            <div key={metric.label} className="glass p-6 group hover:bg-white/[0.04] transition-all">
+              <div className="flex justify-between items-center mb-4">
+                <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">{metric.label}</p>
+                <span className="text-[9px] bg-white/5 px-2 py-0.5 rounded text-white/40">{metric.sub}</span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <h3 className="text-2xl font-bold">{metric.value}</h3>
+                {metric.change && <span className="text-[10px] font-bold text-red-400">{metric.change}</span>}
+              </div>
+              {metric.isChart && (
+                <div className="mt-4 h-4 flex items-center gap-1">
+                  <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-full bg-indigo-500 w-[70%]"></div>
+                  </div>
+                  <span className="text-[9px] text-white/30 whitespace-nowrap">8.4% APY</span>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
-
-      {/* Deposit Modal */}
-      <Modal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        title="Deposit Funds"
-      >
-        <div className="space-y-6">
-          <p className="text-sm text-white/50">Select your preferred payment method to add funds to your Nexus wallet.</p>
-          
-          <div className="grid grid-cols-2 gap-4">
-            <button className="glass p-4 text-left hover:bg-white/10 transition-all group">
-              <div className="w-10 h-10 rounded-xl bg-nexus-purple/20 flex items-center justify-center mb-4 text-nexus-purple group-hover:scale-110 transition-transform">
-                <CreditCard size={20} />
-              </div>
-              <p className="text-sm font-semibold">Credit Card</p>
-              <p className="text-[10px] text-white/30">Instant deposit</p>
-            </button>
-            <button className="glass p-4 text-left hover:bg-white/10 transition-all group">
-              <div className="w-10 h-10 rounded-xl bg-nexus-cyan/20 flex items-center justify-center mb-4 text-nexus-cyan group-hover:scale-110 transition-transform">
-                <Wallet size={20} />
-              </div>
-              <p className="text-sm font-semibold">Crypto Wallet</p>
-              <p className="text-[10px] text-white/30">BTC, ETH, MATIC</p>
-            </button>
-          </div>
-
-          <div className="bg-white/5 p-4 rounded-2xl border border-white/5">
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-sm text-white/60">Amount</span>
-              <span className="text-xs text-nexus-purple font-bold">Max</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <input 
-                type="number" 
-                placeholder="0.00" 
-                className="bg-transparent text-2xl font-bold w-full focus:outline-none"
-              />
-              <span className="text-lg font-bold text-white/30">USD</span>
-            </div>
-          </div>
-
-          <button className="btn-primary w-full py-4 text-base">
-            Confirm Transaction
-          </button>
-        </div>
-      </Modal>
     </DashboardLayout>
   );
 }
+
+
