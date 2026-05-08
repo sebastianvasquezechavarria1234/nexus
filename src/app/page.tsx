@@ -13,7 +13,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { motion } from 'framer-motion';
-import { Clock, Wallet, LayoutGrid, RotateCcw, Maximize2, Filter, ChevronDown, PlayCircle } from 'lucide-react';
+import { Clock, Wallet, LayoutGrid, RotateCcw, Maximize2, Filter, ChevronDown, PlayCircle, ArrowUpRight, Share2 } from 'lucide-react';
 
 const chartData = [
   { value: 400 }, { value: 300 }, { value: 600 }, { value: 800 }, { value: 500 }, { value: 900 }, { value: 700 }
