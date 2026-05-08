@@ -44,8 +44,8 @@ export default function Sidebar() {
         </div>
       </div>
 
-      <div className="p-8 pt-8">
-        <div className="flex bg-[#16161a] p-1 rounded-[14px] mb-8">
+      <div className="pl-6 pr-8 pt-8 pb-8">
+        <div className="flex bg-[#16161a] p-1 rounded-[14px] mb-4">
           <button className="flex-1 py-2 text-[11px] font-medium bg-[#27272a] text-white rounded-[10px] shadow-sm transition-all">Network</button>
           <button className="flex-1 py-2 text-[11px] font-medium text-white/40 hover:text-white/50 transition-colors">Protocol</button>
         </div>
