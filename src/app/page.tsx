@@ -1,8 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import StatsCard from '@/components/dashboard/StatsCard';
+import AssetTable from '@/components/dashboard/AssetTable';
+import Modal from '@/components/dashboard/Modal';
 import { 
   AreaChart, 
   Area, 
@@ -13,9 +15,9 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Wallet, History, LayoutGrid } from 'lucide-react';
+import { Wallet, History, CreditCard, ArrowRight, ShieldCheck } from 'lucide-react';
 
-const data = [
+const chartData = [
   { name: 'Mon', value: 400 },
   { name: 'Tue', value: 300 },
   { name: 'Wed', value: 900 },
@@ -25,16 +27,12 @@ const data = [
   { name: 'Sun', value: 600 },
 ];
 
-const assets = [
-  { name: 'Ethereum', symbol: 'ETH', balance: '1.24', value: '$2,450.20', change: '+2.4%', color: '#8b5cf6' },
-  { name: 'Bitcoin', symbol: 'BTC', balance: '0.045', value: '$43,120.00', change: '+1.2%', color: '#f59e0b' },
-  { name: 'Polygon', symbol: 'MATIC', balance: '1,240', value: '$0.85', change: '-0.5%', color: '#06b6d4' },
-];
-
 export default function Dashboard() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <DashboardLayout>
-      <div className="max-w-[1400px] mx-auto space-y-8">
+      <div className="max-w-[1400px] mx-auto space-y-8 animate-fade-in">
         {/* Welcome Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -46,7 +44,10 @@ export default function Dashboard() {
               <History size={16} />
               History
             </button>
-            <button className="btn-primary px-5 py-2 text-sm flex items-center gap-2">
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="btn-primary px-5 py-2 text-sm flex items-center gap-2"
+            >
               <Wallet size={16} />
               Deposit
             </button>
@@ -55,108 +56,166 @@ export default function Dashboard() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <StatsCard label="Total Staking" value="$42,450" change="12.5%" isUp={true} color="nexus-purple" />
+          <StatsCard label="Total Portfolio" value="$42,450" change="12.5%" isUp={true} color="nexus-purple" />
           <StatsCard label="Daily Earnings" value="$124.50" change="2.4%" isUp={true} color="nexus-cyan" />
           <StatsCard label="Active Nodes" value="12" change="1" isUp={true} color="nexus-pink" />
-          <StatsCard label="Risk Factor" value="Low" change="0.2%" isUp={false} color="green-400" />
+          <StatsCard label="Network Uptime" value="99.9%" change="0.2%" isUp={true} color="green-400" />
         </div>
 
-        {/* Charts & Assets Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Chart */}
-          <div className="lg:col-span-2 glass p-8">
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <h3 className="text-lg font-semibold">Yield Performance</h3>
-                <p className="text-sm text-white/40">Weekly statistics for all active nodes</p>
+        {/* Charts & Portfolio Grid */}
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+          {/* Main Chart Section */}
+          <div className="xl:col-span-2 space-y-8">
+            <div className="glass p-8">
+              <div className="flex items-center justify-between mb-8">
+                <div>
+                  <h3 className="text-lg font-semibold">Yield Performance</h3>
+                  <p className="text-sm text-white/40">Weekly statistics for all active nodes</p>
+                </div>
+                <div className="flex gap-2">
+                  {['1D', '1W', '1M', '1Y'].map((range) => (
+                    <button key={range} className={`px-3 py-1 rounded-lg text-[10px] font-bold ${range === '1W' ? 'bg-nexus-purple text-white' : 'bg-white/5 text-white/30 hover:bg-white/10 transition-colors'}`}>
+                      {range}
+                    </button>
+                  ))}
+                </div>
               </div>
-              <select className="bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white/60 focus:outline-none">
-                <option>Last 7 Days</option>
-                <option>Last 30 Days</option>
-              </select>
+              
+              <div className="h-[300px] w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={chartData}>
+                    <defs>
+                      <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.3}/>
+                        <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
+                    <XAxis 
+                      dataKey="name" 
+                      axisLine={false} 
+                      tickLine={false} 
+                      tick={{fill: 'rgba(255,255,255,0.3)', fontSize: 10}} 
+                    />
+                    <YAxis hide />
+                    <Tooltip 
+                      contentStyle={{ 
+                        backgroundColor: 'rgba(10, 10, 10, 0.9)', 
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        borderRadius: '12px',
+                        backdropFilter: 'blur(10px)'
+                      }}
+                    />
+                    <Area 
+                      type="monotone" 
+                      dataKey="value" 
+                      stroke="#8b5cf6" 
+                      strokeWidth={3} 
+                      fillOpacity={1} 
+                      fill="url(#chartGradient)" 
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
             </div>
-            
-            <div className="h-[350px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={data}>
-                  <defs>
-                    <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.3}/>
-                      <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
-                  <XAxis 
-                    dataKey="name" 
-                    axisLine={false} 
-                    tickLine={false} 
-                    tick={{fill: 'rgba(255,255,255,0.3)', fontSize: 12}} 
-                  />
-                  <YAxis hide />
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: 'rgba(10, 10, 10, 0.9)', 
-                      border: '1px solid rgba(255,255,255,0.1)',
-                      borderRadius: '12px',
-                      backdropFilter: 'blur(10px)'
-                    }}
-                  />
-                  <Area 
-                    type="monotone" 
-                    dataKey="value" 
-                    stroke="#8b5cf6" 
-                    strokeWidth={3} 
-                    fillOpacity={1} 
-                    fill="url(#chartGradient)" 
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
+
+            {/* Asset Table Module */}
+            <AssetTable />
           </div>
 
-          {/* Asset List */}
-          <div className="glass p-8 flex flex-col">
-            <div className="flex items-center justify-between mb-8">
-              <h3 className="text-lg font-semibold">My Assets</h3>
-              <LayoutGrid size={18} className="text-white/40" />
-            </div>
-            
-            <div className="space-y-6 flex-1">
-              {assets.map((asset) => (
-                <motion.div 
-                  key={asset.symbol}
-                  whileHover={{ x: 4 }}
-                  className="flex items-center justify-between group cursor-pointer"
+          {/* Sidebar Modules */}
+          <div className="space-y-8">
+            {/* Quick Deposit Widget */}
+            <div className="glass p-8 bg-gradient-to-br from-nexus-purple/10 to-transparent">
+              <h3 className="text-lg font-semibold mb-2">Grow your assets</h3>
+              <p className="text-sm text-white/40 mb-6">Deposit funds and start earning up to 12% APY instantly.</p>
+              <div className="space-y-4">
+                <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] text-white/30 uppercase font-bold tracking-wider">Estimated APY</span>
+                    <span className="text-nexus-cyan font-bold">12.4%</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck size={14} className="text-green-400" />
+                    <span className="text-[10px] text-green-400/80">Insured by Nexus Protocol</span>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setIsModalOpen(true)}
+                  className="w-full py-4 bg-white text-black font-bold rounded-2xl flex items-center justify-center gap-2 hover:bg-white/90 transition-all"
                 >
-                  <div className="flex items-center gap-4">
-                    <div 
-                      className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold"
-                      style={{ backgroundColor: `${asset.color}20`, color: asset.color }}
-                    >
-                      {asset.symbol[0]}
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium">{asset.name}</p>
-                      <p className="text-xs text-white/40">{asset.balance} {asset.symbol}</p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-sm font-medium">{asset.value}</p>
-                    <p className={`text-xs ${asset.change.startsWith('+') ? 'text-green-400' : 'text-red-400'}`}>
-                      {asset.change}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
+                  Get Started
+                  <ArrowRight size={18} />
+                </button>
+              </div>
             </div>
 
-            <button className="w-full mt-8 py-3 border border-dashed border-white/10 rounded-xl text-xs text-white/30 hover:text-white hover:border-white/30 transition-all flex items-center justify-center gap-2">
-              <ArrowUpRight size={14} />
-              View Portfolio
-            </button>
+            {/* Security Module */}
+            <div className="glass p-8">
+              <h3 className="text-lg font-semibold mb-6">Security Center</h3>
+              <div className="space-y-4">
+                {[
+                  { label: '2FA Authentication', status: 'Enabled', color: 'text-green-400' },
+                  { label: 'Recovery Seed', status: 'Backed Up', color: 'text-green-400' },
+                  { label: 'Withdrawal Lock', status: 'Disabled', color: 'text-red-400' },
+                ].map((item) => (
+                  <div key={item.label} className="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/5">
+                    <span className="text-xs text-white/60">{item.label}</span>
+                    <span className={`text-[10px] font-bold ${item.color}`}>{item.status}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Deposit Modal */}
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        title="Deposit Funds"
+      >
+        <div className="space-y-6">
+          <p className="text-sm text-white/50">Select your preferred payment method to add funds to your Nexus wallet.</p>
+          
+          <div className="grid grid-cols-2 gap-4">
+            <button className="glass p-4 text-left hover:bg-white/10 transition-all group">
+              <div className="w-10 h-10 rounded-xl bg-nexus-purple/20 flex items-center justify-center mb-4 text-nexus-purple group-hover:scale-110 transition-transform">
+                <CreditCard size={20} />
+              </div>
+              <p className="text-sm font-semibold">Credit Card</p>
+              <p className="text-[10px] text-white/30">Instant deposit</p>
+            </button>
+            <button className="glass p-4 text-left hover:bg-white/10 transition-all group">
+              <div className="w-10 h-10 rounded-xl bg-nexus-cyan/20 flex items-center justify-center mb-4 text-nexus-cyan group-hover:scale-110 transition-transform">
+                <Wallet size={20} />
+              </div>
+              <p className="text-sm font-semibold">Crypto Wallet</p>
+              <p className="text-[10px] text-white/30">BTC, ETH, MATIC</p>
+            </button>
+          </div>
+
+          <div className="bg-white/5 p-4 rounded-2xl border border-white/5">
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-sm text-white/60">Amount</span>
+              <span className="text-xs text-nexus-purple font-bold">Max</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <input 
+                type="number" 
+                placeholder="0.00" 
+                className="bg-transparent text-2xl font-bold w-full focus:outline-none"
+              />
+              <span className="text-lg font-bold text-white/30">USD</span>
+            </div>
+          </div>
+
+          <button className="btn-primary w-full py-4 text-base">
+            Confirm Transaction
+          </button>
+        </div>
+      </Modal>
     </DashboardLayout>
   );
 }
