@@ -37,9 +37,9 @@ export default function Dashboard() {
           <div className="xl:col-span-3">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <h3 className="text-[12px] font-bold text-white/30 uppercase tracking-widest">Recommended coins for 24 hours</h3>
+                <h3 className="text-[12px] font-semibold text-white/30 uppercase tracking-widest">Recommended coins for 24 hours</h3>
                 <Clock size={14} className="text-white/20" />
-                <span className="bg-white/5 border border-white/5 px-2.5 py-1 rounded-lg text-[10px] font-black">3 Assets</span>
+                <span className="bg-white/5 border border-white/5 px-2.5 py-1 rounded-lg text-[10px] font-bold">3 Assets</span>
               </div>
               <div className="flex items-center gap-2">
                 {['24H', 'Proof of Stake', 'Desc'].map((filter) => (
@@ -64,9 +64,9 @@ export default function Dashboard() {
                  <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-lg">
                    <div className="w-4 h-4 rounded-full border-2 border-black"></div>
                  </div>
-                 <span className="text-[14px] font-bold tracking-tight">Nexus<span className="text-[9px] text-white/40 ml-0.5">®</span></span>
+                 <span className="text-[14px] font-semibold tracking-tight">Nexus<span className="text-[9px] text-white/40 ml-0.5">®</span></span>
                </div>
-               <span className="text-[9px] bg-white text-black px-2 py-0.5 rounded-full font-black uppercase shadow-xl">New</span>
+               <span className="text-[9px] bg-white text-black px-2 py-0.5 rounded-full font-bold uppercase shadow-xl">New</span>
              </div>
 
              <div className="z-10 py-8">
@@ -111,8 +111,8 @@ export default function Dashboard() {
               </div>
               
               <div className="flex items-center gap-6">
-                <h2 className="text-4xl font-bold tracking-tight">Stake Avalanche (AVAX)</h2>
-                <div className="w-10 h-10 rounded-xl bg-[#e84142] flex items-center justify-center text-white font-black text-lg shadow-lg shadow-red-500/20">A</div>
+                <h2 className="text-4xl font-semibold tracking-tight">Stake Avalanche (AVAX)</h2>
+                <div className="w-10 h-10 rounded-xl bg-[#e84142] flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-red-500/20">A</div>
                 <div className="flex items-center gap-3 ml-2">
                   <div className="p-2 bg-white/[0.03] border border-white/[0.05] rounded-xl text-white/40 hover:text-white transition-colors cursor-pointer"><ArrowUpRight size={18} /></div>
                   <div className="p-2 bg-white/[0.03] border border-white/[0.05] rounded-xl text-white/40 hover:text-white transition-colors cursor-pointer"><Share2 size={18} className="rotate-90" /></div>
@@ -124,9 +124,9 @@ export default function Dashboard() {
               </div>
 
               <div className="relative py-4">
-                <p className="text-[11px] text-white/20 font-bold uppercase tracking-widest absolute top-[-10px] left-0">Current Reward Balance, AVAX</p>
+                <p className="text-[11px] text-white/20 font-semibold uppercase tracking-widest absolute top-[-10px] left-0">Current Reward Balance, AVAX</p>
                 <div className="flex items-center gap-10 mt-6">
-                  <h1 className="text-[96px] font-black tracking-[-0.05em] leading-none">31.39686</h1>
+                  <h1 className="text-[96px] font-bold tracking-[-0.05em] leading-none">31.39686</h1>
                   <div className="flex gap-3">
                     <button className="bg-[#8b5cf6] hover:bg-[#7c3aed] px-8 py-3.5 rounded-full text-[13px] font-bold transition-all shadow-[0_10px_30px_rgba(139,92,246,0.4)] active:scale-[0.98]">Upgrade</button>
                     <button className="bg-white/[0.05] hover:bg-white/[0.08] border border-white/[0.05] px-8 py-3.5 rounded-full text-[13px] font-bold transition-all active:scale-[0.98]">Unstake</button>
@@ -167,7 +167,7 @@ export default function Dashboard() {
                     {/* Handle */}
                     <div className="absolute left-[40%] top-1/2 -translate-y-1/2 w-5 h-5 bg-[#8b5cf6] rounded-full border-[4px] border-[#111114] shadow-xl z-20"></div>
                     {/* Value Bubble */}
-                    <div className="absolute left-[40%] bottom-8 -translate-x-1/2 text-[12px] font-black bg-white/[0.08] backdrop-blur-md border border-white/[0.05] px-4 py-1.5 rounded-full shadow-2xl animate-float">4 Month</div>
+                    <div className="absolute left-[40%] bottom-8 -translate-x-1/2 text-[12px] font-bold bg-white/[0.08] backdrop-blur-md border border-white/[0.05] px-4 py-1.5 rounded-full shadow-2xl animate-float">4 Month</div>
                   </div>
                   
                   <div className="mt-20 flex justify-center">
@@ -186,15 +186,15 @@ export default function Dashboard() {
         {/* Bottom Metrics Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            { label: 'Staked Tokens Trend', value: '-0.82%', sub: '24H', color: 'text-red-400' },
-            { label: 'Price', value: '$41.99', sub: '24H', change: '-1.09%', changeColor: 'text-red-400' },
-            { label: 'Staking Ratio', value: '60.6%', sub: '24H' },
-            { label: 'Reward Rate', value: '8.4%', sub: '24H', isChart: true },
+            { key: 'Staked Tokens Trend', label: 'Staked Tokens Trend', value: '-0.82%', sub: '24H', color: 'text-red-400' },
+            { key: 'Price', label: 'Price', value: '$41.99', sub: '24H', change: '-1.09%', changeColor: 'text-red-400' },
+            { key: 'Staking Ratio', label: 'Staking Ratio', value: '60.6%', sub: '24H' },
+            { key: 'Reward Rate', label: 'Reward Rate', value: '8.4%', sub: '24H', isChart: true },
           ].map((metric) => (
             <div key={metric.label} className="glass p-7 group hover:bg-white/[0.03] transition-all cursor-pointer">
               <div className="flex justify-between items-center mb-6">
-                <p className="text-[11px] text-white/20 font-black uppercase tracking-widest">{metric.label}</p>
-                <div className="bg-white/[0.05] border border-white/[0.05] px-2 py-0.5 rounded-md text-[9px] font-bold text-white/30 uppercase tracking-tighter">{metric.sub}</div>
+                <p className="text-[11px] text-white/20 font-bold uppercase tracking-widest">{metric.label}</p>
+                <div className="bg-white/[0.05] border border-white/[0.05] px-2 py-0.5 rounded-md text-[9px] font-semibold text-white/30 uppercase tracking-tighter">{metric.sub}</div>
               </div>
               <div className="flex items-baseline gap-2">
                 <h3 className={`text-3xl font-bold tracking-tight ${metric.color || 'text-white'}`}>{metric.value}</h3>
