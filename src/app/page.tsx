@@ -8,7 +8,6 @@ import {
   Area, 
   ResponsiveContainer,
 } from 'recharts';
-import { motion } from 'framer-motion';
 import { 
   Clock, 
   Wallet, 
@@ -21,7 +20,11 @@ import {
   Share2,
   Lock,
   Pause,
-  ExternalLink
+  ExternalLink,
+  Cpu,
+  Activity,
+  Globe,
+  Zap
 } from 'lucide-react';
 
 const chartData = [
@@ -37,13 +40,13 @@ export default function Dashboard() {
           <div className="xl:col-span-3">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <h3 className="text-[12px] font-medium text-white/30 uppercase tracking-widest">Recommended coins for 24 hours</h3>
+                <h3 className="text-[12px] font-medium text-white/30 uppercase tracking-widest">Optimized Network Pathways (24H)</h3>
                 <Clock size={14} className="text-white/20" />
-                <span className="bg-white/5 border border-white/5 px-2.5 py-1 rounded-lg text-[10px] font-semibold">3 Assets</span>
+                <span className="bg-white/5 border border-white/5 px-2.5 py-1 rounded-lg text-[10px] font-semibold">3 Active</span>
               </div>
               <div className="flex items-center gap-2">
-                {['24H', 'Proof of Stake', 'Desc'].map((filter) => (
-                  <button key={filter} className="bg-white/[0.03] border border-white/5 px-4 py-1.5 rounded-[12px] text-[10px] font-bold text-white/40 hover:text-white flex items-center gap-2 transition-all">
+                {['Live', 'High Capacity', 'Throughput'].map((filter) => (
+                  <button key={filter} className="bg-white/[0.03] border border-white/5 px-4 py-1.5 rounded-[12px] text-[10px] font-medium text-white/40 hover:text-white flex items-center gap-2 transition-all">
                     {filter}
                     <ChevronDown size={14} className="opacity-50" />
                   </button>
@@ -52,9 +55,9 @@ export default function Dashboard() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <AssetCard name="Ethereum" symbol="ETH" rewardRate="13.62%" change="6.25%" isUp={true} color="#8b5cf6" chartData={chartData} />
-              <AssetCard name="BNB Chain" symbol="BNB" rewardRate="12.72%" change="5.67%" isUp={true} color="#fbbf24" chartData={chartData.map(d => ({ value: d.value * 0.8 }))} />
-              <AssetCard name="Polygon" symbol="Matic" rewardRate="6.29%" change="1.89%" isUp={false} color="#06b6d4" chartData={chartData.map(d => ({ value: d.value * 1.2 }))} />
+              <AssetCard name="Primary Gateway" symbol="GW-1" rewardRate="99.98%" change="0.05%" isUp={true} color="#8b5cf6" chartData={chartData} />
+              <AssetCard name="Neural Relay" symbol="NR-X" rewardRate="94.22%" change="2.14%" isUp={true} color="#fbbf24" chartData={chartData.map(d => ({ value: d.value * 0.8 }))} />
+              <AssetCard name="Edge Link" symbol="EL-4" rewardRate="86.29%" change="1.89%" isUp={false} color="#06b6d4" chartData={chartData.map(d => ({ value: d.value * 1.2 }))} />
             </div>
           </div>
 
@@ -66,23 +69,23 @@ export default function Dashboard() {
                  </div>
                  <span className="text-[14px] font-medium tracking-tight">Nexus<span className="text-[9px] text-white/40 ml-0.5">®</span></span>
                </div>
-               <span className="text-[9px] bg-white text-black px-2 py-0.5 rounded-full font-semibold uppercase shadow-xl">New</span>
+               <span className="text-[9px] bg-white text-black px-2 py-0.5 rounded-full font-semibold uppercase shadow-xl">V2.0</span>
              </div>
 
              <div className="z-10 py-8">
-               <h3 className="text-2xl font-semibold mb-3 tracking-tight">Liquid Staking Portfolio</h3>
+               <h3 className="text-2xl font-semibold mb-3 tracking-tight">Unified Network Intelligence</h3>
                <p className="text-[12px] text-white/50 leading-relaxed max-w-[220px]">
-                 An all-in-one portfolio that helps you make smarter investments into Ethereum Liquid Staking.
+                 Automate your digital presence with high-speed neural links and edge computing infrastructure.
                </p>
              </div>
 
              <div className="space-y-3 z-10">
-               <button className="w-full bg-[#8b5cf6] hover:bg-[#7c3aed] text-white py-3.5 rounded-[18px] text-[13px] font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/20 active:scale-[0.98]">
-                 Connect with Wallet
-                 <Wallet size={16} />
+               <button className="w-full bg-[#8b5cf6] hover:bg-[#7c3aed] text-white py-3.5 rounded-[18px] text-[13px] font-semibold transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/20 active:scale-[0.98]">
+                 Sync with Network
+                 <Globe size={16} />
                </button>
-               <button className="w-full bg-white/[0.05] border border-white/[0.05] hover:bg-white/[0.08] text-white/80 py-3.5 rounded-[18px] text-[13px] font-bold transition-all flex items-center justify-center gap-2 active:scale-[0.98]">
-                 Enter a Wallet Address
+               <button className="w-full bg-white/[0.05] border border-white/[0.05] hover:bg-white/[0.08] text-white/80 py-3.5 rounded-[18px] text-[13px] font-semibold transition-all flex items-center justify-center gap-2 active:scale-[0.98]">
+                 Manual Node Integration
                  <Lock size={14} className="opacity-40" />
                </button>
              </div>
@@ -95,7 +98,7 @@ export default function Dashboard() {
         {/* Active Staking Detail Section */}
         <div className="glass p-10 relative overflow-hidden">
           <div className="flex items-center justify-between mb-12">
-            <h3 className="text-[12px] font-black text-white/20 uppercase tracking-[0.2em]">Your active stakings</h3>
+            <h3 className="text-[12px] font-medium text-white/20 uppercase tracking-[0.2em]">Active Core Infrastructure</h3>
             <div className="flex items-center gap-6 text-white/20">
               <RotateCcw size={18} className="cursor-pointer hover:text-white transition-colors" />
               <Maximize2 size={18} className="cursor-pointer hover:text-white transition-colors" />
@@ -106,44 +109,44 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-16">
             <div className="lg:col-span-3 space-y-10">
               <div className="flex items-center gap-3">
-                <span className="text-[11px] text-white/40 font-bold">Last Update — 45 minutes ago</span>
+                <span className="text-[11px] text-white/40 font-medium">Last Sync — 45 minutes ago</span>
                 <Clock size={14} className="text-white/20" />
               </div>
               
               <div className="flex items-center gap-6">
-                <h2 className="text-4xl font-medium tracking-tight">Stake Avalanche (AVAX)</h2>
-                <div className="w-10 h-10 rounded-xl bg-[#e84142] flex items-center justify-center text-white font-semibold text-lg shadow-lg shadow-red-500/20">A</div>
+                <h2 className="text-4xl font-medium tracking-tighter">Mainframe Cluster (X-7)</h2>
+                <div className="w-10 h-10 rounded-xl bg-[#8b5cf6]/20 border border-[#8b5cf6]/30 flex items-center justify-center text-[#a78bfa] font-semibold text-lg shadow-lg">N</div>
                 <div className="flex items-center gap-3 ml-2">
                   <div className="p-2 bg-white/[0.03] border border-white/[0.05] rounded-xl text-white/40 hover:text-white transition-colors cursor-pointer"><ArrowUpRight size={18} /></div>
                   <div className="p-2 bg-white/[0.03] border border-white/[0.05] rounded-xl text-white/40 hover:text-white transition-colors cursor-pointer"><Share2 size={18} className="rotate-90" /></div>
                   <div className="p-2 bg-white/[0.03] border border-white/[0.05] rounded-xl text-white/40 hover:text-white transition-colors cursor-pointer"><ExternalLink size={18} /></div>
                 </div>
-                <button className="ml-auto bg-white/[0.03] border border-white/[0.05] px-6 py-2.5 rounded-[16px] text-[12px] font-bold hover:bg-white/[0.08] transition-all flex items-center gap-2">
-                  View Profile <ArrowUpRight size={14} />
+                <button className="ml-auto bg-white/[0.03] border border-white/[0.05] px-6 py-2.5 rounded-[16px] text-[12px] font-medium hover:bg-white/[0.08] transition-all flex items-center gap-2">
+                  System Profile <Activity size={14} />
                 </button>
               </div>
 
               <div className="relative py-4">
-                <p className="text-[11px] text-white/20 font-medium uppercase tracking-widest absolute top-[-10px] left-0">Current Reward Balance, AVAX</p>
+                <p className="text-[11px] text-white/20 font-medium uppercase tracking-[0.2em] absolute top-[-10px] left-0">Real-time Data Throughput, P/S</p>
                 <div className="flex items-center gap-10 mt-6">
-                  <h1 className="text-[96px] font-semibold tracking-[-0.05em] leading-none">31.39686</h1>
+                  <h1 className="text-[96px] font-semibold tracking-[-0.07em] leading-none">31.39686</h1>
                   <div className="flex gap-3">
-                    <button className="bg-[#8b5cf6] hover:bg-[#7c3aed] px-8 py-3.5 rounded-full text-[13px] font-semibold transition-all shadow-[0_10px_30px_rgba(139,92,246,0.4)] active:scale-[0.98]">Upgrade</button>
-                    <button className="bg-white/[0.05] hover:bg-white/[0.08] border border-white/[0.05] px-8 py-3.5 rounded-full text-[13px] font-semibold transition-all active:scale-[0.98]">Unstake</button>
+                    <button className="bg-[#8b5cf6] hover:bg-[#7c3aed] px-8 py-3.5 rounded-full text-[13px] font-semibold transition-all shadow-[0_10px_30px_rgba(139,92,246,0.4)] active:scale-[0.98]">Optimize</button>
+                    <button className="bg-white/[0.05] hover:bg-white/[0.08] border border-white/[0.05] px-8 py-3.5 rounded-full text-[13px] font-semibold transition-all active:scale-[0.98]">Offline Mode</button>
                   </div>
                 </div>
               </div>
 
               <div className="grid grid-cols-4 gap-8 pt-12 border-t border-white/[0.05]">
                 {[
-                  { label: 'Momentum', sub: 'Growth dynamics' },
-                  { label: 'General', sub: 'Overview' },
-                  { label: 'Risk', sub: 'Risk assessment' },
-                  { label: 'Reward', sub: 'Expected profit' },
+                  { label: 'Neural Flow', sub: 'Signal dynamics' },
+                  { label: 'Topology', sub: 'Network layout' },
+                  { label: 'Latency', sub: 'Response time' },
+                  { label: 'Reliability', sub: 'Uptime score' },
                 ].map((item) => (
                   <div key={item.label} className="cursor-pointer group">
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-[14px] font-bold group-hover:text-white transition-colors">{item.label}</span>
+                      <span className="text-[14px] font-medium group-hover:text-white transition-colors">{item.label}</span>
                       <ChevronDown size={16} className="text-white/10 group-hover:text-white/40 transition-colors" />
                     </div>
                     <p className="text-[11px] text-white/20 font-medium">{item.sub}</p>
@@ -155,10 +158,10 @@ export default function Dashboard() {
             <div className="relative lg:col-span-1">
               <div className="glass p-8 bg-white/[0.01] border-white/[0.05] h-full flex flex-col rounded-[32px]">
                 <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-[15px] font-bold">Investment Period</h3>
-                  <span className="text-[10px] bg-white/[0.05] border border-white/5 px-2.5 py-1 rounded-full text-white/50 font-bold">6 Month</span>
+                  <h3 className="text-[15px] font-medium">Deployment Cycle</h3>
+                  <span className="text-[10px] bg-white/[0.05] border border-white/5 px-2.5 py-1 rounded-full text-white/50 font-medium">Q3 Phase</span>
                 </div>
-                <p className="text-[11px] text-white/20 mb-12 font-bold uppercase tracking-[0.1em]">Contribution Period (Month)</p>
+                <p className="text-[11px] text-white/20 mb-12 font-medium uppercase tracking-[0.1em]">Sync Period (Nodes)</p>
                 
                 <div className="relative flex-1 flex flex-col justify-center px-4">
                   <div className="h-[3px] w-full bg-white/[0.05] rounded-full relative">
@@ -167,7 +170,7 @@ export default function Dashboard() {
                     {/* Handle */}
                     <div className="absolute left-[40%] top-1/2 -translate-y-1/2 w-5 h-5 bg-[#8b5cf6] rounded-full border-[4px] border-[#111114] shadow-xl z-20"></div>
                     {/* Value Bubble */}
-                    <div className="absolute left-[40%] bottom-8 -translate-x-1/2 text-[12px] font-medium bg-white/[0.08] backdrop-blur-md border border-white/[0.05] px-4 py-1.5 rounded-full shadow-2xl animate-float">4 Month</div>
+                    <div className="absolute left-[40%] bottom-8 -translate-x-1/2 text-[12px] font-medium bg-white/[0.08] backdrop-blur-md border border-white/[0.05] px-4 py-1.5 rounded-full shadow-2xl animate-float">4 Clusters</div>
                   </div>
                   
                   <div className="mt-20 flex justify-center">
@@ -177,7 +180,7 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                <div className="absolute right-[5px] top-1/2 -translate-y-1/2 text-[10px] text-white/10 font-bold uppercase tracking-widest rotate-90 origin-center whitespace-nowrap">Contribution Period</div>
+                <div className="absolute right-[5px] top-1/2 -translate-y-1/2 text-[10px] text-white/10 font-medium uppercase tracking-widest rotate-90 origin-center whitespace-nowrap">Global Synchronization</div>
               </div>
             </div>
           </div>
@@ -186,10 +189,10 @@ export default function Dashboard() {
         {/* Bottom Metrics Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            { key: 'Staked Tokens Trend', label: 'Staked Tokens Trend', value: '-0.82%', sub: '24H', color: 'text-red-400' },
-            { key: 'Price', label: 'Price', value: '$41.99', sub: '24H', change: '-1.09%', changeColor: 'text-red-400' },
-            { key: 'Staking Ratio', label: 'Staking Ratio', value: '60.6%', sub: '24H' },
-            { key: 'Reward Rate', label: 'Reward Rate', value: '8.4%', sub: '24H', isChart: true },
+            { key: 'Latency Trend', label: 'Latency Trend', value: '-0.82ms', sub: '24H', color: 'text-green-400' },
+            { key: 'Bandwidth Cost', label: 'Bandwidth Cost', value: '$0.041', sub: 'MB', change: '-1.09%', changeColor: 'text-green-400' },
+            { key: 'Saturation', label: 'Network Saturation', value: '42.6%', sub: 'Global' },
+            { key: 'Uptime', label: 'Uptime Efficiency', value: '99.9%', sub: 'SLA', isChart: true },
           ].map((metric) => (
             <div key={metric.label} className="glass p-7 group hover:bg-white/[0.03] transition-all cursor-pointer">
               <div className="flex justify-between items-center mb-6">
@@ -202,12 +205,12 @@ export default function Dashboard() {
               </div>
               {metric.isChart && (
                 <div className="mt-6 flex flex-col gap-2">
-                   <div className="flex justify-between text-[10px] font-bold text-white/30">
+                   <div className="flex justify-between text-[10px] font-medium text-white/30">
                      <span>Min</span>
                      <span>Max</span>
                    </div>
                    <div className="h-1.5 w-full bg-white/[0.05] rounded-full overflow-hidden">
-                     <div className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 w-[70%] rounded-full"></div>
+                     <div className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 w-[99%] rounded-full"></div>
                    </div>
                 </div>
               )}

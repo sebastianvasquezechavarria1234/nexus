@@ -4,9 +4,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   LayoutDashboard, 
-  Box, 
-  Share2, 
-  Calculator, 
+  Server, 
+  Globe, 
+  Activity, 
   Database, 
   Zap,
   Layers,
@@ -15,36 +15,39 @@ import {
 } from 'lucide-react';
 
 const menuItems = [
-  { icon: LayoutDashboard, label: 'Dashboard', active: true },
-  { icon: Box, label: 'Assets', active: false },
-  { icon: Share2, label: 'Staking Providers', active: false },
-  { icon: Calculator, label: 'Staking Calculator', active: false },
-  { icon: Database, label: 'Data API', active: false, badge: '↗' },
-  { icon: Zap, label: 'Liquid Staking', active: false, badge: 'Beta' },
+  { icon: LayoutDashboard, label: 'Control Center', active: true },
+  { icon: Server, label: 'Infrastructure', active: false },
+  { icon: Globe, label: 'Global Nodes', active: false },
+  { icon: Activity, label: 'Performance Metrics', active: false },
+  { icon: Database, label: 'Nexus API', active: false, badge: '↗' },
+  { icon: Zap, label: 'Neural Linking', active: false, badge: 'Beta' },
 ];
 
 const activeStakings = [
-  { name: 'Asset Ethereum', amount: '$7,699.00', color: '#627EEA', symbol: 'ETH' },
-  { name: 'Asset Avalanche', amount: '$1,340.00', color: '#E84142', symbol: 'AVAX' },
-  { name: 'Asset Polygon (Matic)', amount: '$540.00', color: '#8247E5', symbol: 'MATIC' },
-  { name: 'Asset Solana', amount: '$980.00', color: '#14F195', symbol: 'SOL' },
+  { name: 'Core Gateway A', amount: '840.0 Gbps', color: '#627EEA', symbol: 'NET' },
+  { name: 'Relay Node West', amount: '124.5 Gbps', color: '#E84142', symbol: 'CORE' },
+  { name: 'Edge Connector', amount: '54.0 Gbps', color: '#8247E5', symbol: 'EDGE' },
+  { name: 'Backup Cluster', amount: '98.0 Gbps', color: '#14F195', symbol: 'SYNC' },
 ];
 
 export default function Sidebar() {
   return (
     <aside className="w-[280px] bg-[#0a0a0c] flex flex-col h-screen fixed left-0 top-0 z-[50] overflow-y-auto border-r border-white/5">
-      <div className="p-8">
-        <div className="flex items-center gap-3 mb-10">
-          <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-black font-semibold text-lg shadow-lg">N</div>
+      {/* Logo Section - Full Width Border */}
+      <div className="px-8 py-5 border-b border-white/5">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-black font-medium text-lg shadow-lg">N</div>
           <div>
-            <div className="text-xl font-semibold leading-none">Nexus<span className="text-[10px] align-top text-white/40 ml-0.5">®</span></div>
-            <div className="text-[10px] text-white/30 font-medium tracking-tight mt-1">Top Staking Assets</div>
+            <div className="text-xl font-medium leading-none">Nexus<span className="text-[10px] align-top text-white/40 ml-0.5">®</span></div>
+            <div className="text-[10px] text-white/30 font-medium tracking-tight mt-1">Next-Gen Connectivity</div>
           </div>
         </div>
+      </div>
 
+      <div className="p-8 pt-8">
         <div className="flex bg-[#16161a] p-1 rounded-[14px] mb-8">
-          <button className="flex-1 py-2 text-[11px] font-medium bg-[#27272a] text-white rounded-[10px] shadow-sm transition-all">Staking</button>
-          <button className="flex-1 py-2 text-[11px] font-medium text-white/30 hover:text-white/50 transition-colors">Stablecoin</button>
+          <button className="flex-1 py-2 text-[11px] font-medium bg-[#27272a] text-white rounded-[10px] shadow-sm transition-all">Network</button>
+          <button className="flex-1 py-2 text-[11px] font-medium text-white/40 hover:text-white/50 transition-colors">Protocol</button>
         </div>
 
         <nav className="space-y-1 mb-10">
@@ -74,8 +77,8 @@ export default function Sidebar() {
           <div className="flex items-center justify-between px-3">
             <div className="flex items-center gap-2 text-[11px] font-medium text-white/30 uppercase tracking-widest">
               <Layers size={14} />
-              Active Staking
-              <span className="bg-[#8b5cf6] text-white w-4 h-4 flex items-center justify-center rounded-full text-[9px] font-semibold">6</span>
+              Active Clusters
+              <span className="bg-[#8b5cf6] text-white w-4 h-4 flex items-center justify-center rounded-full text-[9px] font-semibold">12</span>
             </div>
             <ChevronRight size={14} className="text-white/10" />
           </div>
@@ -92,7 +95,7 @@ export default function Sidebar() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-[11px] font-semibold truncate text-white/50">{stake.name}</p>
-                  <p className="text-[11px] font-bold text-white mt-0.5">Amount {stake.amount}</p>
+                  <p className="text-[11px] font-bold text-white mt-0.5">Flow {stake.amount}</p>
                 </div>
               </div>
             ))}
@@ -105,9 +108,9 @@ export default function Sidebar() {
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-2">
               <Zap size={14} className="text-[#a78bfa]" />
-              <span className="text-[11px] font-bold text-white/90">Activate Super</span>
+              <span className="text-[11px] font-bold text-white/90">Nexus Prime</span>
             </div>
-            <p className="text-[10px] text-white/30">Unlock all features on Nexus</p>
+            <p className="text-[10px] text-white/30">Scale your bandwidth globally</p>
           </div>
           <div className="absolute top-[-20px] right-[-20px] w-16 h-16 bg-[#8b5cf6]/10 rounded-full blur-xl"></div>
         </button>
