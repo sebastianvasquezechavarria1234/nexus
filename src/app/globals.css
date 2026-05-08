@@ -5,7 +5,7 @@
   --color-nexus-cyan: #06b6d4;
   --color-nexus-pink: #ec4899;
   --color-nexus-dark: #0a0a0c;
-  --color-nexus-border: rgba(255, 255, 255, 0.08);
+  --color-nexus-card: #111114;
 }
 
 :root {
@@ -16,53 +16,46 @@
 body {
   @apply bg-[#0a0a0c] text-white antialiased;
   font-family: var(--font-plus-jakarta), system-ui, sans-serif;
-  overflow-x: hidden;
 }
 
-/* Glassmorphism exacto de la imagen */
+/* Efecto de borde con luz superior como en la imagen */
 .glass {
-  @apply bg-[#111114]/60 backdrop-blur-xl border border-white/5 rounded-[24px];
+  @apply bg-[#111114]/60 backdrop-blur-xl border border-white/[0.05] rounded-[24px] shadow-2xl;
+  position: relative;
 }
 
-.sidebar-item-active {
-  @apply bg-white/5 text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)];
+.glass::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .gradient-text {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-nexus-purple to-nexus-cyan font-extrabold;
 }
 
-.btn-action {
-  @apply px-5 py-2.5 rounded-[16px] font-semibold transition-all duration-300 active:scale-95;
+.btn-pill {
+  @apply px-6 py-2.5 rounded-full font-bold transition-all duration-300 active:scale-95 text-sm;
 }
 
-.btn-primary {
-  @apply bg-gradient-to-r from-nexus-purple to-nexus-cyan text-white hover:shadow-[0_8px_20px_rgba(139,92,246,0.3)];
-}
-
-.btn-secondary {
-  @apply bg-white/5 border border-white/10 text-white/70 hover:bg-white/10;
-}
-
-/* Scrollbar minimalista */
+/* Scrollbar invisible */
 ::-webkit-scrollbar {
-  width: 4px;
+  display: none;
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
