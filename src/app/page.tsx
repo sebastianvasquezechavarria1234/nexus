@@ -11,8 +11,6 @@ import {
   CartesianGrid, 
   Tooltip, 
   ResponsiveContainer,
-  BarChart,
-  Bar
 } from 'recharts';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Wallet, History, LayoutGrid } from 'lucide-react';
@@ -41,7 +39,7 @@ export default function Dashboard() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold tracking-tight mb-1">Hello, Sebastian</h1>
-            <p className="text-white/40 text-sm">Here is what's happening with your network today.</p>
+            <p className="text-white/40 text-sm">Here is what&apos;s happening with your network today.</p>
           </div>
           <div className="flex items-center gap-3">
             <button className="glass px-4 py-2 text-sm font-medium flex items-center gap-2 hover:bg-white/10 transition-colors">

@@ -9,7 +9,6 @@ import {
   Calculator, 
   Database, 
   Settings, 
-  Bell,
   LogOut,
   User
 } from 'lucide-react';
@@ -34,7 +33,7 @@ export default function Sidebar() {
       </div>
 
       <nav className="flex-1 px-4 space-y-2">
-        {menuItems.map((item, index) => (
+        {menuItems.map((item) => (
           <motion.button
             key={item.label}
             whileHover={{ x: 4 }}
