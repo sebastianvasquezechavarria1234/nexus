@@ -1,6 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-nexus-purple: #8b5cf6;
+  --color-nexus-cyan: #06b6d4;
+  --color-nexus-pink: #ec4899;
+}
 
 :root {
   --bg-color: #050505;
@@ -13,25 +17,21 @@
   --transition-speed: 0.4s;
 }
 
-@layer base {
-  body {
-    @apply bg-[#050505] text-white antialiased;
-    font-family: var(--font-geist-sans), system-ui, sans-serif;
-  }
+body {
+  @apply bg-[#050505] text-white antialiased;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
-@layer components {
-  .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
-  }
+.glass {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+}
 
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-nexus-purple to-nexus-cyan font-extrabold;
-  }
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-nexus-purple to-nexus-cyan font-extrabold;
+}
 
-  .btn-primary {
-    @apply px-6 py-3 rounded-full bg-gradient-to-r from-nexus-purple to-nexus-cyan text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(139,92,246,0.3)] flex items-center justify-center gap-2;
-  }
+.btn-primary {
+  @apply px-6 py-3 rounded-full bg-gradient-to-r from-nexus-purple to-nexus-cyan text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(139,92,246,0.3)] flex items-center justify-center gap-2;
 }
 
 /* Background gradient animation */
