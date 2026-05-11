@@ -36,14 +36,6 @@ export default function TopBar() {
       </div>
 
       <div className="flex items-center gap-3">
-        <button className="flex items-center gap-2 bg-white/5 border border-white/5 px-4 py-1.5 rounded-full text-[11px] font-semibold text-white/60 hover:bg-white/10 transition-colors relative">
-          Notifications
-          <div className="relative">
-            <Bell size={14} />
-            <span className="absolute -top-1 -right-1.5 w-3.5 h-3.5 bg-indigo-500 rounded-full border-2 border-[#0a0a0c] text-[7px] text-white flex items-center justify-center font-bold">2</span>
-          </div>
-        </button>
-        
         <div className="relative group">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-white/40" size={16} />
           <input 
@@ -53,10 +45,21 @@ export default function TopBar() {
           />
         </div>
 
-        <button className="flex items-center gap-2 bg-white/5 border border-white/5 px-4 py-1.5 rounded-full text-[11px] font-semibold text-white/60 hover:bg-white/10 transition-colors">
-          Settings
-          <Settings size={14} />
-        </button>
+        {/* Grouped Notifications + Settings */}
+        <div className="flex items-center gap-1">
+          <button className="flex items-center gap-2 bg-white/5 border border-white/5 px-4 py-1.5 rounded-full text-[11px] font-thin text-white/60 hover:bg-white/10 transition-colors relative">
+            Notifications
+            <div className="relative">
+              <Bell size={14} />
+              <span className="absolute -top-1 -right-1.5 w-3.5 h-3.5 bg-indigo-500 rounded-full border-2 border-[#0a0a0c] text-[7px] text-white flex items-center justify-center font-bold">2</span>
+            </div>
+          </button>
+
+          <button className="flex items-center gap-2 bg-white/5 border border-white/5 px-4 py-1.5 rounded-full text-[11px] font-thin text-white/60 hover:bg-white/10 transition-colors">
+            Settings
+            <Settings size={14} />
+          </button>
+        </div>
       </div>
     </header>
   );

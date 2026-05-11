@@ -16,7 +16,7 @@ interface AssetCardProps {
 
 export default function AssetCard({ name, symbol, rewardRate, change, isUp, chartData, color }: AssetCardProps) {
   return (
-    <div className="glass p-6 flex flex-col justify-between h-[190px] relative overflow-hidden group cursor-pointer">
+    <div className="glass p-6 flex flex-col justify-between h-[330px] relative overflow-hidden group cursor-pointer">
       <div className="flex justify-between items-start z-10">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-white/[0.03] border border-white/[0.05] flex items-center justify-center p-2 group-hover:bg-white/[0.08] transition-all">
@@ -45,7 +45,7 @@ export default function AssetCard({ name, symbol, rewardRate, change, isUp, char
         </div>
       </div>
 
-      <div className="absolute inset-x-0 bottom-[-1px] h-20 w-full opacity-40 group-hover:opacity-70 transition-all">
+      <div className="absolute inset-x-0 bottom-[-1px] h-32 w-full opacity-40 group-hover:opacity-70 transition-all">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={chartData}>
             <defs>

@@ -14,8 +14,13 @@
 }
 
 body {
-  @apply bg-[#0a0a0c] text-white antialiased tracking-tight;
+  @apply bg-[#0a0a0c] text-white antialiased tracking-tight font-thin;
   font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+}
+
+/* Ultra-thin for all small text labels and descriptions */
+p, span, label, small, .text-xs, input::placeholder {
+  font-weight: 100;
 }
 
 /* Efecto de borde con luz superior como en la imagen */
