@@ -110,24 +110,32 @@ export default function Dashboard() {
             <div className="lg:col-span-3 space-y-12">
               {/* Header Section: Identity & Global Actions */}
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-5">
-                  <div className="w-14 h-14 rounded-3xl bg-gradient-to-br from-[#8b5cf6] to-[#6d28d9] p-[1px] shadow-xl shadow-purple-500/20">
-                    <div className="w-full h-full rounded-[23px] bg-[#0a0a0c] flex items-center justify-center text-[#a78bfa] font-bold text-2xl">
-                      N
+                <div className="flex items-start gap-6">
+                  <div className="relative">
+                    <div className="w-16 h-16 rounded-[24px] bg-gradient-to-br from-white/[0.08] to-transparent border border-white/10 flex items-center justify-center backdrop-blur-md shadow-2xl">
+                      <span className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-white to-white/40">N</span>
+                    </div>
+                    <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#0a0a0c] border-[3px] border-[#0a0a0c] flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
                     </div>
                   </div>
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-3">
-                      <h2 className="text-3xl font-medium tracking-tight">Mainframe Cluster <span className="text-white/20 font-light">X-7</span></h2>
-                      <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-green-500/10 border border-green-500/20 text-[9px] text-green-400 font-bold uppercase tracking-wider">
-                        <div className="w-1 h-1 rounded-full bg-green-400 animate-pulse"></div>
-                        Operational
-                      </span>
+                  
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-4">
+                      <h2 className="text-4xl font-extralight tracking-tight text-white">Mainframe Cluster <span className="text-white/20 font-extralight tracking-tighter">#X-7</span></h2>
+                      <div className="px-3 py-1 rounded-full bg-green-500/5 border border-green-500/10 flex items-center gap-2">
+                        <span className="text-[10px] font-bold text-green-400 uppercase tracking-widest">Operational</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <p className="text-[11px] text-white/30 font-medium tracking-widest uppercase">Nexus Core Infrastructure — v2.0.4</p>
-                      <div className="w-1 h-1 rounded-full bg-white/10"></div>
-                      <span className="text-[11px] text-white/40 font-medium">Synced 45m ago</span>
+                    <div className="flex items-center gap-5 text-[11px] font-medium uppercase tracking-[0.15em] text-white/30">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1 h-1 rounded-full bg-indigo-500/50"></div>
+                        <span>Nexus Infrastructure v2.0.4</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-1 h-1 rounded-full bg-purple-500/50"></div>
+                        <span>Last Sync: 45m ago</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -146,34 +154,90 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              {/* Main Stats Row */}
-              <div className="grid grid-cols-12 gap-12 items-center">
-                <div className="col-span-7 space-y-8">
-                   <div className="space-y-2">
-                     <p className="text-[11px] text-white/20 font-medium uppercase tracking-[0.2em]">Real-time Throughput</p>
-                     <div className="flex items-baseline gap-4">
-                       <h1 className="text-[92px] font-medium tracking-[-0.06em] leading-none text-white">31.39686</h1>
-                       <span className="text-lg font-medium text-white/10 tracking-widest uppercase">Petabytes / s</span>
-                     </div>
-                   </div>
-                   <div className="flex gap-4">
-                     <button className="bg-[#8b5cf6] hover:bg-[#7c3aed] px-8 py-2.5 rounded-[14px] text-[13px] font-light transition-all shadow-[0_10px_30px_rgba(139,92,246,0.2)] active:scale-[0.98]">Optimize Network</button>
-                     <button className="bg-white/[0.03] hover:bg-white/[0.05] border border-white/[0.05] px-8 py-2.5 rounded-[14px] text-[13px] font-light transition-all active:scale-[0.98]">Offline Mode</button>
-                   </div>
+              {/* Main Stats Area */}
+              <div className="space-y-12">
+                <div className="flex items-end justify-between">
+                  <div className="space-y-2">
+                    <p className="text-[11px] text-white/20 font-medium uppercase tracking-[0.2em]">Real-time Throughput</p>
+                    <div className="flex items-baseline gap-4">
+                      <h1 className="text-[92px] font-medium tracking-[-0.06em] leading-none text-white">31.39686</h1>
+                      <span className="text-lg font-medium text-white/10 tracking-widest uppercase">Petabytes / s</span>
+                    </div>
+                  </div>
+                  <div className="flex gap-4 pb-2">
+                    <button className="bg-[#8b5cf6] hover:bg-[#7c3aed] px-10 py-2.5 rounded-[14px] text-[13px] font-light transition-all shadow-[0_10px_30px_rgba(139,92,246,0.2)] active:scale-[0.98]">Optimize Network</button>
+                    <button className="bg-white/[0.03] hover:bg-white/[0.05] border border-white/[0.05] px-10 py-2.5 rounded-[14px] text-[13px] font-light transition-all active:scale-[0.98]">Offline Mode</button>
+                  </div>
                 </div>
                 
-                <div className="col-span-5 grid grid-cols-1 gap-4">
+                <div className="grid grid-cols-3 gap-3">
                    {[
-                     { label: 'Architecture', value: '128-bit Quad', icon: <Cpu size={14} />, color: 'text-indigo-400' },
-                     { label: 'Compute Load', value: '14.2%', icon: <Activity size={14} />, color: 'text-emerald-400' },
-                     { label: 'Energy Draw', value: '0.82 kW/h', icon: <Zap size={14} />, color: 'text-amber-400' },
+                     { 
+                       label: 'Architecture', 
+                       value: '128-bit Quad', 
+                       sub: 'Neural Core V3', 
+                       icon: <Cpu size={18} />, 
+                       color: 'text-indigo-400', 
+                       bg: 'bg-indigo-500', 
+                       glow: 'hover:shadow-[0_0_20px_rgba(99,102,241,0.05)]',
+                       details: [{ l: 'Units', v: '512' }, { l: 'Set', v: 'RISC-V' }, { l: 'Cache', v: '64KB' }, { l: 'Bus', v: '512GB/s' }]
+                     },
+                     { 
+                       label: 'Compute Load', 
+                       value: '14.2%', 
+                       sub: 'Peak: 24.5%', 
+                       icon: <Activity size={18} />, 
+                       color: 'text-emerald-400', 
+                       bg: 'bg-emerald-500', 
+                       glow: 'hover:shadow-[0_0_20px_rgba(16,185,129,0.05)]',
+                       details: [{ l: 'RAM', v: '4.2GB' }, { l: 'Threads', v: '1k+' }, { l: 'Wait', v: '0.2%' }, { l: 'Queue', v: '0' }]
+                     },
+                     { 
+                       label: 'Energy Draw', 
+                       value: '0.82 kW/h', 
+                       sub: 'Efficiency: 98%', 
+                       icon: <Zap size={18} />, 
+                       color: 'text-amber-400', 
+                       bg: 'bg-amber-500', 
+                       glow: 'hover:shadow-[0_0_20px_rgba(245,158,11,0.05)]',
+                       details: [{ l: 'Volt', v: '1.2V' }, { l: 'Temp', v: '32°C' }, { l: 'Fan', v: '1.2k' }, { l: 'Peak', v: '1.1kW' }]
+                     },
                    ].map((stat) => (
-                     <div key={stat.label} className="glass p-5 flex items-center justify-between border-white/[0.03] bg-white/[0.01]">
-                       <div className="flex items-center gap-4">
-                         <div className={`p-2.5 rounded-xl bg-white/[0.03] ${stat.color} border border-white/[0.05]`}>{stat.icon}</div>
-                         <span className="text-[11px] font-medium text-white/30 uppercase tracking-wider">{stat.label}</span>
+                     <div key={stat.label} className={`glass p-5 flex flex-col gap-4 border-white/10 bg-white/[0.04] hover:bg-white/[0.06] transition-all group ${stat.glow}`}>
+                       <div className="flex items-center justify-between">
+                         <div className={`p-2.5 rounded-xl bg-white/5 ${stat.color} border border-white/10 group-hover:scale-110 transition-transform`}>{stat.icon}</div>
+                         <div className="text-right">
+                           <span className="text-[15px] font-bold text-white font-mono tracking-tight block">{stat.value}</span>
+                           <span className="text-[9px] text-white/40 font-medium uppercase tracking-widest">{stat.sub}</span>
+                         </div>
                        </div>
-                       <span className="text-[14px] font-bold text-white/90 font-mono tracking-tight">{stat.value}</span>
+                       
+                       <div className="space-y-2">
+                         <div className="flex justify-between items-center">
+                           <p className="text-[10px] font-medium text-white/60 uppercase tracking-widest">{stat.label}</p>
+                           <span className="text-[8px] bg-white/10 px-1.5 py-0.5 rounded text-white/60 font-bold tracking-tighter">STABLE</span>
+                         </div>
+                         <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                           <div className={`h-full ${stat.bg} opacity-50 group-hover:opacity-100 transition-all w-2/3`}></div>
+                         </div>
+                       </div>
+
+                       <div className="grid grid-cols-2 gap-x-4 gap-y-3 pt-3 border-t border-white/10">
+                         {stat.details.map((d, i) => (
+                           <div key={i} className="flex flex-col gap-0.5">
+                             <span className="text-[7px] text-white/30 font-bold uppercase tracking-wider">{d.l}</span>
+                             <span className="text-[10px] text-white/70 font-mono group-hover:text-white transition-colors">{d.v}</span>
+                           </div>
+                         ))}
+                       </div>
+
+                       <div className="flex items-center justify-between mt-1 pt-3 border-t border-white/10">
+                         <span className="text-[7px] text-white/30 font-bold uppercase tracking-widest">Region: EU-WEST-1</span>
+                         <div className="flex items-center gap-1.5">
+                           <div className={`w-1 h-1 rounded-full ${stat.bg} animate-pulse shadow-[0_0_8px_${stat.bg.replace('bg-', '')}]`}></div>
+                           <span className="text-[7px] text-white/40 font-bold uppercase tracking-widest">Live Feed</span>
+                         </div>
+                       </div>
                      </div>
                    ))}
                 </div>
@@ -202,7 +266,7 @@ export default function Dashboard() {
             </div>
 
             <div className="relative lg:col-span-1">
-              <div className="glass p-8 bg-white/[0.01] border-white/[0.05] h-full flex flex-col rounded-[32px] min-h-[450px]">
+              <div className="p-8 border-l border-white/[0.05] h-full flex flex-col min-h-[450px]">
                 <div className="flex items-center justify-between mb-8">
                   <div className="flex flex-col gap-1">
                     <h3 className="text-[15px] font-medium tracking-tight">System Monitor</h3>
@@ -211,7 +275,7 @@ export default function Dashboard() {
                   <span className="text-[9px] bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-1 rounded-full text-indigo-400 font-bold animate-pulse">LIVE</span>
                 </div>
                 
-                <div className="flex-1 space-y-6 overflow-hidden relative">
+                <div className="flex-1 space-y-6 overflow-visible relative">
                   {[
                     { time: '09:42:11', event: 'Packet routing optimized via Neural Relay NR-X', detail: 'Latency reduced by 4ms', color: 'bg-indigo-500' },
                     { time: '09:41:04', event: 'New node connection established: Edge Link EL-4', detail: 'Bandwidth: 1.2 GB/s', color: 'bg-emerald-500' },

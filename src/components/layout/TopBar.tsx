@@ -27,7 +27,7 @@ export default function TopBar() {
           </div>
         </div>
 
-        <button className="flex items-center gap-2 bg-[#8b5cf6]/20 text-[#a78bfa] px-6 py-2.5 rounded-[14px] text-[13px] font-light border border-[#8b5cf6]/30 ml-4 hover:bg-[#8b5cf6]/30 transition-all">
+        <button className="flex items-center gap-2 bg-white/5 border border-white/5 px-4 py-1.5 rounded-full text-xs font-medium text-white/60 hover:bg-white/10 transition-all ml-4">
           Deposit
           <div className="bg-[#a78bfa] text-[#8b5cf6] rounded-md p-0.5">
             <Plus size={12} className="text-white" />
@@ -47,7 +47,7 @@ export default function TopBar() {
 
         {/* Grouped Notifications + Settings */}
         <div className="flex items-center gap-1">
-          <button className="flex items-center gap-2 bg-white/5 border border-white/5 px-4 py-2.5 rounded-[14px] text-[13px] font-light text-white/60 hover:bg-white/10 transition-colors relative">
+          <button className="flex items-center gap-2 bg-white/5 border border-white/5 px-4 py-1.5 rounded-full text-xs font-medium text-white/60 hover:bg-white/10 transition-colors relative">
             Notifications
             <div className="relative">
               <Bell size={14} />
@@ -55,7 +55,7 @@ export default function TopBar() {
             </div>
           </button>
 
-          <button className="flex items-center gap-2 bg-white/5 border border-white/5 px-4 py-2.5 rounded-[14px] text-[13px] font-light text-white/60 hover:bg-white/10 transition-colors">
+          <button className="flex items-center gap-2 bg-white/5 border border-white/5 px-4 py-1.5 rounded-full text-xs font-medium text-white/60 hover:bg-white/10 transition-colors">
             Settings
             <Settings size={14} />
           </button>
