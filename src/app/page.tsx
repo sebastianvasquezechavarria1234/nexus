@@ -114,8 +114,21 @@ export default function Dashboard() {
               </div>
               
               <div className="flex items-center gap-6">
-                <h2 className="text-4xl font-medium tracking-tighter">Mainframe Cluster (X-7)</h2>
-                <div className="w-10 h-10 rounded-xl bg-[#8b5cf6]/20 border border-[#8b5cf6]/30 flex items-center justify-center text-[#a78bfa] font-semibold text-lg shadow-lg">N</div>
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-3 mb-1">
+                    <h2 className="text-4xl font-medium tracking-tighter">Mainframe Cluster (X-7)</h2>
+                    <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20 text-[9px] text-green-400 font-bold uppercase tracking-wider">
+                      <div className="w-1 h-1 rounded-full bg-green-400 animate-pulse"></div>
+                      Operational
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-4 text-white/20 text-[10px] font-medium uppercase tracking-widest">
+                    <span className="flex items-center gap-1"><Cpu size={10} /> Core: 128-bit</span>
+                    <span className="flex items-center gap-1"><Activity size={10} /> Load: 14.2%</span>
+                    <span className="flex items-center gap-1"><Zap size={10} /> Power: 0.8kW</span>
+                  </div>
+                </div>
+                <div className="w-12 h-12 rounded-2xl bg-[#8b5cf6]/20 border border-[#8b5cf6]/30 flex items-center justify-center text-[#a78bfa] font-semibold text-xl shadow-lg ml-2">N</div>
                 <div className="flex items-center gap-3 ml-2">
                   <div className="p-2 bg-white/[0.03] border border-white/[0.05] rounded-xl text-white/40 hover:text-white transition-colors cursor-pointer"><ArrowUpRight size={18} /></div>
                   <div className="p-2 bg-white/[0.03] border border-white/[0.05] rounded-xl text-white/40 hover:text-white transition-colors cursor-pointer"><Share2 size={18} className="rotate-90" /></div>
@@ -139,19 +152,43 @@ export default function Dashboard() {
 
               <div className="grid grid-cols-4 gap-8 pt-12 border-t border-white/[0.05]">
                 {[
-                  { label: 'Neural Flow', sub: 'Signal dynamics' },
-                  { label: 'Topology', sub: 'Network layout' },
-                  { label: 'Latency', sub: 'Response time' },
-                  { label: 'Reliability', sub: 'Uptime score' },
+                  { label: 'Neural Flow', sub: 'Signal dynamics', value: 'Optimized', status: 'bg-indigo-500' },
+                  { label: 'Topology', sub: 'Network layout', value: 'Distributed', status: 'bg-emerald-500' },
+                  { label: 'Latency', sub: 'Response time', value: '12ms avg', status: 'bg-amber-500' },
+                  { label: 'Reliability', sub: 'Uptime score', value: '99.99%', status: 'bg-blue-500' },
                 ].map((item) => (
                   <div key={item.label} className="cursor-pointer group">
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="text-[14px] font-medium group-hover:text-white transition-colors">{item.label}</span>
-                      <ChevronDown size={16} className="text-white/10 group-hover:text-white/40 transition-colors" />
+                      <div className={`w-1.5 h-1.5 rounded-full ${item.status} shadow-[0_0_8px_rgba(255,255,255,0.2)]`}></div>
                     </div>
-                    <p className="text-[11px] text-white/20 font-medium">{item.sub}</p>
+                    <div className="flex items-center justify-between">
+                      <p className="text-[11px] text-white/20 font-medium">{item.sub}</p>
+                      <span className="text-[10px] text-white/40 font-mono">{item.value}</span>
+                    </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Real-time System Logs */}
+              <div className="pt-8 mt-2 border-t border-white/[0.05]">
+                <div className="flex items-center justify-between mb-4">
+                  <p className="text-[10px] text-white/20 font-medium uppercase tracking-[0.2em]">Real-time Event Stream</p>
+                  <span className="text-[9px] text-indigo-400 font-mono animate-pulse">LIVE CONNECTED</span>
+                </div>
+                <div className="space-y-2.5">
+                  {[
+                    { time: '09:42:11', event: 'Packet routing optimized via Neural Relay NR-X', type: 'system' },
+                    { time: '09:41:04', event: 'New node connection established: Edge Link EL-4', type: 'network' },
+                    { time: '09:38:55', event: 'Security handshake completed: RSA-4096', type: 'security' },
+                  ].map((log, i) => (
+                    <div key={i} className="flex items-center gap-4 text-[11px] font-mono group hover:bg-white/[0.02] p-1.5 rounded-lg transition-all">
+                      <span className="text-white/20">{log.time}</span>
+                      <span className="text-white/10">|</span>
+                      <span className="text-white/40 group-hover:text-white/60 transition-colors">{log.event}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
