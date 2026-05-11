@@ -21,7 +21,7 @@ export default function AssetCard({ name, symbol, rewardRate, change, isUp, char
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-white/[0.03] border border-white/[0.05] flex items-center justify-center p-2 group-hover:bg-white/[0.08] transition-all">
              <div className="w-full h-full rounded-full bg-white/10 flex items-center justify-center text-[10px] font-bold">
-               {symbol.slice(0, 2)}
+               {symbol.slice(0, 1)}
              </div>
           </div>
           <div>
