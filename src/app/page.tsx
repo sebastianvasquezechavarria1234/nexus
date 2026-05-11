@@ -46,7 +46,7 @@ export default function Dashboard() {
               </div>
               <div className="flex items-center gap-2">
                 {['Live', 'High Capacity', 'Throughput'].map((filter) => (
-                  <button key={filter} className="bg-white/[0.03] border border-white/5 px-4 py-1.5 rounded-[12px] text-[10px] font-medium text-white/40 hover:text-white flex items-center gap-2 transition-all">
+                  <button key={filter} className="bg-white/[0.03] border border-white/5 px-4 py-2.5 rounded-[14px] text-[11px] font-light text-white/40 hover:text-white flex items-center gap-2 transition-all">
                     {filter}
                     <ChevronDown size={14} className="opacity-50" />
                   </button>
@@ -107,50 +107,80 @@ export default function Dashboard() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-16">
-            <div className="lg:col-span-3 space-y-10">
-              <div className="flex items-center gap-3">
-                <span className="text-[11px] text-white/40 font-medium">Last Sync — 45 minutes ago</span>
-                <Clock size={14} className="text-white/20" />
-              </div>
-              
-              <div className="flex items-center gap-6">
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-3 mb-1">
-                    <h2 className="text-4xl font-medium tracking-tighter">Mainframe Cluster (X-7)</h2>
-                    <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20 text-[9px] text-green-400 font-bold uppercase tracking-wider">
-                      <div className="w-1 h-1 rounded-full bg-green-400 animate-pulse"></div>
-                      Operational
-                    </span>
+            <div className="lg:col-span-3 space-y-12">
+              {/* Header Section: Identity & Global Actions */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-5">
+                  <div className="w-14 h-14 rounded-3xl bg-gradient-to-br from-[#8b5cf6] to-[#6d28d9] p-[1px] shadow-xl shadow-purple-500/20">
+                    <div className="w-full h-full rounded-[23px] bg-[#0a0a0c] flex items-center justify-center text-[#a78bfa] font-bold text-2xl">
+                      N
+                    </div>
                   </div>
-                  <div className="flex items-center gap-4 text-white/20 text-[10px] font-medium uppercase tracking-widest">
-                    <span className="flex items-center gap-1"><Cpu size={10} /> Core: 128-bit</span>
-                    <span className="flex items-center gap-1"><Activity size={10} /> Load: 14.2%</span>
-                    <span className="flex items-center gap-1"><Zap size={10} /> Power: 0.8kW</span>
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-3">
+                      <h2 className="text-3xl font-medium tracking-tight">Mainframe Cluster <span className="text-white/20 font-light">X-7</span></h2>
+                      <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-green-500/10 border border-green-500/20 text-[9px] text-green-400 font-bold uppercase tracking-wider">
+                        <div className="w-1 h-1 rounded-full bg-green-400 animate-pulse"></div>
+                        Operational
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <p className="text-[11px] text-white/30 font-medium tracking-widest uppercase">Nexus Core Infrastructure — v2.0.4</p>
+                      <div className="w-1 h-1 rounded-full bg-white/10"></div>
+                      <span className="text-[11px] text-white/40 font-medium">Synced 45m ago</span>
+                    </div>
                   </div>
                 </div>
-                 <div className="w-12 h-12 rounded-2xl bg-[#8b5cf6]/20 border border-[#8b5cf6]/30 flex items-center justify-center text-[#a78bfa] font-medium text-xl shadow-lg ml-2">N</div>
-                <div className="flex items-center gap-3 ml-2">
-                  <div className="p-2 bg-white/[0.03] border border-white/[0.05] rounded-xl text-white/40 hover:text-white transition-colors cursor-pointer"><ArrowUpRight size={18} /></div>
-                  <div className="p-2 bg-white/[0.03] border border-white/[0.05] rounded-xl text-white/40 hover:text-white transition-colors cursor-pointer"><Share2 size={18} className="rotate-90" /></div>
-                  <div className="p-2 bg-white/[0.03] border border-white/[0.05] rounded-xl text-white/40 hover:text-white transition-colors cursor-pointer"><ExternalLink size={18} /></div>
-                </div>
-                 <button className="ml-auto bg-white/[0.03] border border-white/[0.05] px-6 py-2.5 rounded-[16px] text-[12px] font-light hover:bg-white/[0.08] transition-all flex items-center justify-center gap-2">
-                   System Profile <Activity size={14} />
-                 </button>
-              </div>
-
-              <div className="relative py-4">
-                <p className="text-[11px] text-white/20 font-medium uppercase tracking-[0.2em] absolute top-[-10px] left-0">Real-time Data Throughput, P/S</p>
-                <div className="flex items-center gap-10 mt-6">
-                  <h1 className="text-[96px] font-medium tracking-[-0.07em] leading-none">31.39686</h1>
-                  <div className="flex gap-3">
-                    <button className="bg-[#8b5cf6] hover:bg-[#7c3aed] px-8 py-3.5 rounded-full text-[13px] font-light transition-all shadow-[0_10px_30px_rgba(139,92,246,0.4)] active:scale-[0.98]">Optimize</button>
-                    <button className="bg-white/[0.05] hover:bg-white/[0.08] border border-white/[0.05] px-8 py-3.5 rounded-full text-[13px] font-light transition-all active:scale-[0.98]">Offline Mode</button>
+                
+                <div className="flex items-center gap-3 bg-white/[0.02] border border-white/[0.05] p-1.5 rounded-2xl">
+                  <div className="flex items-center">
+                    <button className="p-2.5 hover:bg-white/5 rounded-xl text-white/30 hover:text-white transition-all"><ArrowUpRight size={18} /></button>
+                    <button className="p-2.5 hover:bg-white/5 rounded-xl text-white/30 hover:text-white transition-all"><Share2 size={18} className="rotate-90" /></button>
+                    <button className="p-2.5 hover:bg-white/5 rounded-xl text-white/30 hover:text-white transition-all"><ExternalLink size={18} /></button>
                   </div>
+                  <div className="w-px h-6 bg-white/10 mx-1"></div>
+                  <button className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-[11px] font-semibold transition-all">
+                    <Activity size={14} className="text-[#a78bfa]" />
+                    Profile
+                  </button>
                 </div>
               </div>
 
-              <div className="grid grid-cols-4 gap-8 pt-12 border-t border-white/[0.05]">
+              {/* Main Stats Row */}
+              <div className="grid grid-cols-12 gap-12 items-center">
+                <div className="col-span-7 space-y-8">
+                   <div className="space-y-2">
+                     <p className="text-[11px] text-white/20 font-medium uppercase tracking-[0.2em]">Real-time Throughput</p>
+                     <div className="flex items-baseline gap-4">
+                       <h1 className="text-[92px] font-medium tracking-[-0.06em] leading-none text-white">31.39686</h1>
+                       <span className="text-lg font-medium text-white/10 tracking-widest uppercase">Petabytes / s</span>
+                     </div>
+                   </div>
+                   <div className="flex gap-4">
+                     <button className="bg-[#8b5cf6] hover:bg-[#7c3aed] px-8 py-2.5 rounded-[14px] text-[13px] font-light transition-all shadow-[0_10px_30px_rgba(139,92,246,0.2)] active:scale-[0.98]">Optimize Network</button>
+                     <button className="bg-white/[0.03] hover:bg-white/[0.05] border border-white/[0.05] px-8 py-2.5 rounded-[14px] text-[13px] font-light transition-all active:scale-[0.98]">Offline Mode</button>
+                   </div>
+                </div>
+                
+                <div className="col-span-5 grid grid-cols-1 gap-4">
+                   {[
+                     { label: 'Architecture', value: '128-bit Quad', icon: <Cpu size={14} />, color: 'text-indigo-400' },
+                     { label: 'Compute Load', value: '14.2%', icon: <Activity size={14} />, color: 'text-emerald-400' },
+                     { label: 'Energy Draw', value: '0.82 kW/h', icon: <Zap size={14} />, color: 'text-amber-400' },
+                   ].map((stat) => (
+                     <div key={stat.label} className="glass p-5 flex items-center justify-between border-white/[0.03] bg-white/[0.01]">
+                       <div className="flex items-center gap-4">
+                         <div className={`p-2.5 rounded-xl bg-white/[0.03] ${stat.color} border border-white/[0.05]`}>{stat.icon}</div>
+                         <span className="text-[11px] font-medium text-white/30 uppercase tracking-wider">{stat.label}</span>
+                       </div>
+                       <span className="text-[14px] font-bold text-white/90 font-mono tracking-tight">{stat.value}</span>
+                     </div>
+                   ))}
+                </div>
+              </div>
+
+              {/* Metrics Grid */}
+              <div className="grid grid-cols-4 gap-10 pt-10 border-t border-white/[0.05]">
                 {[
                   { label: 'Neural Flow', sub: 'Signal dynamics', value: 'Optimized', status: 'bg-indigo-500' },
                   { label: 'Topology', sub: 'Network layout', value: 'Distributed', status: 'bg-emerald-500' },
@@ -158,9 +188,9 @@ export default function Dashboard() {
                   { label: 'Reliability', sub: 'Uptime score', value: '99.99%', status: 'bg-blue-500' },
                 ].map((item) => (
                   <div key={item.label} className="cursor-pointer group">
-                    <div className="flex items-center justify-between mb-1.5">
+                    <div className="flex items-center justify-between mb-2">
                       <span className="text-[14px] font-medium group-hover:text-white transition-colors">{item.label}</span>
-                      <div className={`w-1.5 h-1.5 rounded-full ${item.status} shadow-[0_0_8px_rgba(255,255,255,0.2)]`}></div>
+                      <div className={`w-1.5 h-1.5 rounded-full ${item.status} shadow-[0_0_12px_rgba(255,255,255,0.1)]`}></div>
                     </div>
                     <div className="flex items-center justify-between">
                       <p className="text-[11px] text-white/20 font-medium">{item.sub}</p>
@@ -206,7 +236,7 @@ export default function Dashboard() {
                   <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#0a0a0c] to-transparent pointer-events-none"></div>
                 </div>
 
-                <button className="mt-8 w-full py-3 rounded-2xl bg-white/[0.03] border border-white/5 text-[11px] font-semibold text-white/40 hover:bg-white/[0.05] hover:text-white transition-all flex items-center justify-center gap-2">
+                <button className="mt-8 w-full py-2.5 rounded-[14px] bg-white/[0.03] border border-white/5 text-[13px] font-light text-white/40 hover:bg-white/[0.05] hover:text-white transition-all flex items-center justify-center gap-2">
                   View Full History
                   <ExternalLink size={12} />
                 </button>
