@@ -73,18 +73,18 @@ export default function Dashboard() {
              </div>
 
              <div className="z-10 py-8">
-               <h3 className="text-2xl font-semibold mb-3 tracking-tight">Unified Network Intelligence</h3>
+               <h3 className="text-2xl font-medium mb-3 tracking-tight">Unified Network Intelligence</h3>
                <p className="text-[12px] text-white/50 leading-relaxed max-w-[220px]">
                  Automate your digital presence with high-speed neural links and edge computing infrastructure.
                </p>
              </div>
 
              <div className="space-y-3 z-10">
-               <button className="w-full bg-[#8b5cf6] hover:bg-[#7c3aed] text-white py-3.5 rounded-[18px] text-[13px] font-semibold transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/20 active:scale-[0.98]">
+               <button className="w-full bg-[#8b5cf6] hover:bg-[#7c3aed] text-white py-2.5 rounded-[14px] text-[13px] font-light transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/20 active:scale-[0.98]">
                  Sync with Network
                  <Globe size={16} />
                </button>
-               <button className="w-full bg-white/[0.05] border border-white/[0.05] hover:bg-white/[0.08] text-white/80 py-3.5 rounded-[18px] text-[13px] font-semibold transition-all flex items-center justify-center gap-2 active:scale-[0.98]">
+               <button className="w-full bg-white/[0.05] border border-white/[0.05] hover:bg-white/[0.08] text-white/80 py-2.5 rounded-[14px] text-[13px] font-light transition-all flex items-center justify-center gap-2 active:scale-[0.98]">
                  Manual Node Integration
                  <Lock size={14} className="opacity-40" />
                </button>
@@ -128,24 +128,24 @@ export default function Dashboard() {
                     <span className="flex items-center gap-1"><Zap size={10} /> Power: 0.8kW</span>
                   </div>
                 </div>
-                <div className="w-12 h-12 rounded-2xl bg-[#8b5cf6]/20 border border-[#8b5cf6]/30 flex items-center justify-center text-[#a78bfa] font-semibold text-xl shadow-lg ml-2">N</div>
+                 <div className="w-12 h-12 rounded-2xl bg-[#8b5cf6]/20 border border-[#8b5cf6]/30 flex items-center justify-center text-[#a78bfa] font-medium text-xl shadow-lg ml-2">N</div>
                 <div className="flex items-center gap-3 ml-2">
                   <div className="p-2 bg-white/[0.03] border border-white/[0.05] rounded-xl text-white/40 hover:text-white transition-colors cursor-pointer"><ArrowUpRight size={18} /></div>
                   <div className="p-2 bg-white/[0.03] border border-white/[0.05] rounded-xl text-white/40 hover:text-white transition-colors cursor-pointer"><Share2 size={18} className="rotate-90" /></div>
                   <div className="p-2 bg-white/[0.03] border border-white/[0.05] rounded-xl text-white/40 hover:text-white transition-colors cursor-pointer"><ExternalLink size={18} /></div>
                 </div>
-                <button className="ml-auto bg-white/[0.03] border border-white/[0.05] px-6 py-2.5 rounded-[16px] text-[12px] font-medium hover:bg-white/[0.08] transition-all flex items-center gap-2">
-                  System Profile <Activity size={14} />
-                </button>
+                 <button className="ml-auto bg-white/[0.03] border border-white/[0.05] px-6 py-2.5 rounded-[16px] text-[12px] font-light hover:bg-white/[0.08] transition-all flex items-center justify-center gap-2">
+                   System Profile <Activity size={14} />
+                 </button>
               </div>
 
               <div className="relative py-4">
                 <p className="text-[11px] text-white/20 font-medium uppercase tracking-[0.2em] absolute top-[-10px] left-0">Real-time Data Throughput, P/S</p>
                 <div className="flex items-center gap-10 mt-6">
-                  <h1 className="text-[96px] font-semibold tracking-[-0.07em] leading-none">31.39686</h1>
+                  <h1 className="text-[96px] font-medium tracking-[-0.07em] leading-none">31.39686</h1>
                   <div className="flex gap-3">
-                    <button className="bg-[#8b5cf6] hover:bg-[#7c3aed] px-8 py-3.5 rounded-full text-[13px] font-semibold transition-all shadow-[0_10px_30px_rgba(139,92,246,0.4)] active:scale-[0.98]">Optimize</button>
-                    <button className="bg-white/[0.05] hover:bg-white/[0.08] border border-white/[0.05] px-8 py-3.5 rounded-full text-[13px] font-semibold transition-all active:scale-[0.98]">Offline Mode</button>
+                    <button className="bg-[#8b5cf6] hover:bg-[#7c3aed] px-8 py-3.5 rounded-full text-[13px] font-light transition-all shadow-[0_10px_30px_rgba(139,92,246,0.4)] active:scale-[0.98]">Optimize</button>
+                    <button className="bg-white/[0.05] hover:bg-white/[0.08] border border-white/[0.05] px-8 py-3.5 rounded-full text-[13px] font-light transition-all active:scale-[0.98]">Offline Mode</button>
                   </div>
                 </div>
               </div>

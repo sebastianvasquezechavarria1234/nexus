@@ -25,7 +25,7 @@ export default function AssetCard({ name, symbol, rewardRate, change, isUp, char
              </div>
           </div>
           <div>
-            <p className="text-[10px] text-white/30 uppercase font-semibold tracking-widest mb-0.5">Proof of Stake</p>
+            <p className="text-[10px] text-white/30 uppercase font-medium tracking-widest mb-0.5">Proof of Stake</p>
             <h4 className="text-[14px] font-medium text-white/90">{name} ({symbol})</h4>
           </div>
         </div>
