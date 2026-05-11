@@ -36,7 +36,7 @@ export default function Dashboard() {
     <DashboardLayout>
       <div className="max-w-[1600px] mx-auto space-y-10 animate-fade-in px-4 pb-12">
         {/* Top Section */}
-        <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-3">
           <div className="xl:col-span-3">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
@@ -54,7 +54,7 @@ export default function Dashboard() {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <AssetCard name="Primary Gateway" symbol="GW-1" rewardRate="99.98%" change="0.05%" isUp={true} color="#8b5cf6" chartData={chartData} />
               <AssetCard name="Neural Relay" symbol="NR-X" rewardRate="94.22%" change="2.14%" isUp={true} color="#fbbf24" chartData={chartData.map(d => ({ value: d.value * 0.8 }))} />
               <AssetCard name="Edge Link" symbol="EL-4" rewardRate="86.29%" change="1.89%" isUp={false} color="#06b6d4" chartData={chartData.map(d => ({ value: d.value * 1.2 }))} />

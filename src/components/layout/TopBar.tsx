@@ -30,7 +30,7 @@ export default function TopBar() {
         <button className="flex items-center gap-2 bg-[#8b5cf6]/20 text-[#a78bfa] px-4 py-1.5 rounded-full text-xs font-semibold border border-[#8b5cf6]/30 ml-4 hover:bg-[#8b5cf6]/30 transition-all">
           Deposit
           <div className="bg-[#a78bfa] text-[#8b5cf6] rounded-md p-0.5">
-            <Plus size={12} />
+            <Plus size={12} className="text-white" />
           </div>
         </button>
       </div>
