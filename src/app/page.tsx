@@ -169,55 +169,47 @@ export default function Dashboard() {
                   </div>
                 ))}
               </div>
-
-              {/* Real-time System Logs */}
-              <div className="pt-8 mt-2 border-t border-white/[0.05]">
-                <div className="flex items-center justify-between mb-4">
-                  <p className="text-[10px] text-white/20 font-medium uppercase tracking-[0.2em]">Real-time Event Stream</p>
-                  <span className="text-[9px] text-indigo-400 font-mono animate-pulse">LIVE CONNECTED</span>
-                </div>
-                <div className="space-y-2.5">
-                  {[
-                    { time: '09:42:11', event: 'Packet routing optimized via Neural Relay NR-X', type: 'system' },
-                    { time: '09:41:04', event: 'New node connection established: Edge Link EL-4', type: 'network' },
-                    { time: '09:38:55', event: 'Security handshake completed: RSA-4096', type: 'security' },
-                  ].map((log, i) => (
-                    <div key={i} className="flex items-center gap-4 text-[11px] font-mono group hover:bg-white/[0.02] p-1.5 rounded-lg transition-all">
-                      <span className="text-white/20">{log.time}</span>
-                      <span className="text-white/10">|</span>
-                      <span className="text-white/40 group-hover:text-white/60 transition-colors">{log.event}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
 
             <div className="relative lg:col-span-1">
-              <div className="glass p-8 bg-white/[0.01] border-white/[0.05] h-full flex flex-col rounded-[32px]">
+              <div className="glass p-8 bg-white/[0.01] border-white/[0.05] h-full flex flex-col rounded-[32px] min-h-[450px]">
                 <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-[15px] font-medium">Deployment Cycle</h3>
-                  <span className="text-[10px] bg-white/[0.05] border border-white/5 px-2.5 py-1 rounded-full text-white/50 font-medium">Q3 Phase</span>
+                  <div className="flex flex-col gap-1">
+                    <h3 className="text-[15px] font-medium tracking-tight">System Monitor</h3>
+                    <p className="text-[10px] text-white/20 font-medium uppercase tracking-widest">Real-time Stream</p>
+                  </div>
+                  <span className="text-[9px] bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-1 rounded-full text-indigo-400 font-bold animate-pulse">LIVE</span>
                 </div>
-                <p className="text-[11px] text-white/20 mb-12 font-medium uppercase tracking-[0.1em]">Sync Period (Nodes)</p>
                 
-                <div className="relative flex-1 flex flex-col justify-center px-4">
-                  <div className="h-[3px] w-full bg-white/[0.05] rounded-full relative">
-                    {/* Slider Line */}
-                    <div className="absolute left-0 top-0 h-full bg-indigo-500 w-[40%] rounded-full shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
-                    {/* Handle */}
-                    <div className="absolute left-[40%] top-1/2 -translate-y-1/2 w-5 h-5 bg-[#8b5cf6] rounded-full border-[4px] border-[#111114] shadow-xl z-20"></div>
-                    {/* Value Bubble */}
-                    <div className="absolute left-[40%] bottom-8 -translate-x-1/2 text-[12px] font-medium bg-white/[0.08] backdrop-blur-md border border-white/[0.05] px-4 py-1.5 rounded-full shadow-2xl animate-float">4 Clusters</div>
-                  </div>
-                  
-                  <div className="mt-20 flex justify-center">
-                    <div className="w-16 h-16 rounded-full bg-white/[0.03] border border-white/[0.05] flex items-center justify-center group cursor-pointer hover:bg-white/[0.08] transition-all">
-                      <Pause size={24} className="text-white/20 group-hover:text-white transition-colors" />
+                <div className="flex-1 space-y-6 overflow-hidden relative">
+                  {[
+                    { time: '09:42:11', event: 'Packet routing optimized via Neural Relay NR-X', detail: 'Latency reduced by 4ms', color: 'bg-indigo-500' },
+                    { time: '09:41:04', event: 'New node connection established: Edge Link EL-4', detail: 'Bandwidth: 1.2 GB/s', color: 'bg-emerald-500' },
+                    { time: '09:38:55', event: 'Security handshake completed: RSA-4096', detail: 'Identity verified', color: 'bg-blue-500' },
+                    { time: '09:35:12', event: 'Mainframe Cluster (X-7) auto-scaling triggered', detail: 'Added 2 virtual nodes', color: 'bg-purple-500' },
+                    { time: '09:30:00', event: 'Backup synchronization successful', detail: 'All clusters synced', color: 'bg-white/20' },
+                  ].map((log, i) => (
+                    <div key={i} className="relative pl-6 pb-2 border-l border-white/5 group last:pb-0">
+                      <div className={`absolute left-[-3.5px] top-0 w-1.5 h-1.5 rounded-full ${log.color} shadow-[0_0_8px_rgba(255,255,255,0.1)] group-hover:scale-125 transition-transform`}></div>
+                      <div className="flex flex-col gap-1.5">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[10px] text-white/20 font-mono">{log.time}</span>
+                          <ArrowUpRight size={10} className="text-white/10 group-hover:text-white/40 transition-all" />
+                        </div>
+                        <p className="text-[11px] text-white/60 leading-relaxed font-medium group-hover:text-white transition-colors">{log.event}</p>
+                        <p className="text-[9px] text-white/20 font-medium italic">{log.detail}</p>
+                      </div>
                     </div>
-                  </div>
+                  ))}
+                  
+                  {/* Fading effect at bottom */}
+                  <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#0a0a0c] to-transparent pointer-events-none"></div>
                 </div>
 
-                <div className="absolute right-[5px] top-1/2 -translate-y-1/2 text-[10px] text-white/10 font-medium uppercase tracking-widest rotate-90 origin-center whitespace-nowrap">Global Synchronization</div>
+                <button className="mt-8 w-full py-3 rounded-2xl bg-white/[0.03] border border-white/5 text-[11px] font-semibold text-white/40 hover:bg-white/[0.05] hover:text-white transition-all flex items-center justify-center gap-2">
+                  View Full History
+                  <ExternalLink size={12} />
+                </button>
               </div>
             </div>
           </div>
