@@ -96,7 +96,7 @@ export default function Dashboard() {
         </div>
 
         {/* Active Staking Detail Section */}
-        <div className="glass p-10 relative overflow-hidden">
+        <div className="glass p-10 relative overflow-hidden -mt-6">
           <div className="flex items-center justify-between mb-12">
             <h3 className="text-[12px] font-medium text-white/20 uppercase tracking-[0.2em]">Active Core Infrastructure</h3>
             <div className="flex items-center gap-6 text-white/20">
