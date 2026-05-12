@@ -127,7 +127,7 @@ export default function Dashboard() {
                         <span className="text-[10px] font-bold text-green-400 uppercase tracking-widest">Operational</span>
                       </div>
                     </div>
-                    <div className="flex items-center gap-5 text-[11px] font-medium uppercase tracking-[0.15em] text-white/30">
+                    <div className="flex items-center gap-5 text-[11px] font-medium text-white/60">
                       <div className="flex items-center gap-2">
                         <div className="w-1 h-1 rounded-full bg-indigo-500/50"></div>
                         <span>Nexus Infrastructure v2.0.4</span>
@@ -158,10 +158,10 @@ export default function Dashboard() {
               <div className="space-y-12">
                 <div className="flex items-end justify-between">
                   <div className="space-y-2">
-                    <p className="text-[11px] text-white/20 font-medium uppercase tracking-[0.2em]">Real-time Throughput</p>
+                    <p className="text-[11px] text-white/60 font-medium">Real-time Throughput</p>
                     <div className="flex items-baseline gap-4">
                       <h1 className="text-[92px] font-medium tracking-[-0.06em] leading-none text-white">31.39686</h1>
-                      <span className="text-lg font-medium text-white/10 tracking-widest uppercase">Petabytes / s</span>
+                      <span className="text-lg font-medium text-white/40">Petabytes / s</span>
                     </div>
                   </div>
                   <div className="flex gap-4 pb-2">

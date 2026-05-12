@@ -120,7 +120,7 @@ export default function Sidebar() {
               <p className="text-[10px] text-white/30 leading-relaxed font-medium">Scale your bandwidth globally with neural priority.</p>
             </div>
             
-            <div className="py-2.5 w-full bg-white/[0.03] border border-white/5 text-white/60 text-[10px] font-bold uppercase tracking-widest rounded-xl text-center group-hover:bg-white group-hover:text-black transition-all">
+            <div className="py-2.5 w-full bg-white/[0.03] border border-white/5 text-white/60 text-[10px] font-medium rounded-xl text-center group-hover:bg-white group-hover:text-black transition-all">
                Upgrade to Prime
             </div>
           </div>
