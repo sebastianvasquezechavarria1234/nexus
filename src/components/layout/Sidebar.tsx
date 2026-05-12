@@ -36,7 +36,7 @@ export default function Sidebar() {
       {/* Logo Section - Full Width Border */}
       <div className="pl-6 pr-8 py-5 border-b border-white/5 sticky top-0 bg-[#0a0a0c]/90 backdrop-blur-md z-20">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-[20px] bg-gradient-to-br from-white/[0.15] to-transparent border border-white/10 flex items-center justify-center backdrop-blur-md shadow-xl">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-white/[0.15] to-transparent border border-white/10 flex items-center justify-center backdrop-blur-md shadow-xl">
             <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-white to-white/40">N</span>
           </div>
           <div>
