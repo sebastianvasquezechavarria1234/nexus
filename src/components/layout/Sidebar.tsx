@@ -103,16 +103,28 @@ export default function Sidebar() {
         </div>
       </div>
 
-      <div className="mt-auto p-6">
-        <button className="w-full bg-[#16161a] border border-white/5 p-4 rounded-[20px] text-left group hover:border-white/10 transition-all relative overflow-hidden">
-          <div className="relative z-10">
-            <div className="flex items-center gap-2 mb-2">
-              <Zap size={14} className="text-[#a78bfa]" />
-              <span className="text-[11px] font-bold text-white/90">Nexus Prime</span>
+      <div className="mt-auto px-6 pb-8">
+        <button className="w-full relative group p-[1px] rounded-[24px] overflow-hidden transition-all active:scale-[0.98]">
+          {/* Animated Gradient Border */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#8b5cf6] via-[#d946ef] to-[#3b82f6] opacity-20 group-hover:opacity-100 transition-opacity animate-pulse"></div>
+          
+          <div className="relative bg-[#111114] rounded-[23px] p-5 text-left flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+               <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/5 flex items-center justify-center">
+                  <Zap size={20} className="text-[#a78bfa] fill-[#a78bfa]/20" />
+               </div>
+               <span className="text-[8px] font-black uppercase tracking-[0.2em] px-2 py-1 bg-white/5 border border-white/10 text-white/60 rounded-md group-hover:bg-[#8b5cf6] group-hover:text-white group-hover:border-transparent transition-all">Elite</span>
             </div>
-            <p className="text-[10px] text-white/30">Scale your bandwidth globally</p>
+            
+            <div className="space-y-1">
+              <h4 className="text-[15px] font-bold text-white tracking-tight">Nexus Prime</h4>
+              <p className="text-[10px] text-white/30 leading-relaxed font-medium">Scale your bandwidth globally with neural priority.</p>
+            </div>
+            
+            <div className="py-2.5 w-full bg-white/[0.03] border border-white/5 text-white/60 text-[10px] font-bold uppercase tracking-widest rounded-xl text-center group-hover:bg-white group-hover:text-black transition-all">
+               Upgrade to Prime
+            </div>
           </div>
-          <div className="absolute top-[-20px] right-[-20px] w-16 h-16 bg-[#8b5cf6]/10 rounded-full blur-xl"></div>
         </button>
       </div>
     </aside>
