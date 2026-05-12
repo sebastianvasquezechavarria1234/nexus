@@ -34,7 +34,7 @@ export default function Sidebar() {
   return (
     <aside className="w-[280px] bg-[#0a0a0c] flex flex-col h-screen fixed left-0 top-0 z-[50] overflow-y-auto border-r border-white/5">
       {/* Logo Section - Full Width Border */}
-      <div className="pl-6 pr-8 py-5 border-b border-white/5">
+      <div className="pl-6 pr-8 py-5 border-b border-white/5 sticky top-0 bg-[#0a0a0c]/90 backdrop-blur-md z-20">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-black font-medium text-lg shadow-lg">N</div>
           <div>
