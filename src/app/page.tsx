@@ -61,20 +61,26 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="glass p-8 bg-gradient-to-br from-[#4f46e5]/20 via-[#7c3aed]/5 to-transparent relative overflow-hidden flex flex-col justify-between group">
+          <div className="glass p-8 bg-[#111114] relative overflow-hidden flex flex-col justify-between group transition-all duration-500 hover:shadow-[0_0_50px_rgba(139,92,246,0.15)]">
+             {/* Dynamic Mesh Gradient Background */}
+             <div className="absolute inset-0 bg-gradient-to-br from-[#4f46e5]/20 via-transparent to-transparent opacity-100 transition-opacity duration-500 group-hover:opacity-80"></div>
+             <div className="absolute -top-[20%] -left-[10%] w-[70%] h-[70%] bg-[#8b5cf6]/15 rounded-full blur-[80px] group-hover:bg-[#8b5cf6]/25 transition-all duration-700"></div>
+             <div className="absolute -bottom-[20%] -right-[10%] w-[60%] h-[60%] bg-[#06b6d4]/10 rounded-full blur-[60px] group-hover:bg-[#06b6d4]/20 transition-all duration-700 animate-pulse"></div>
+             <div className="absolute top-1/4 right-0 w-32 h-32 bg-[#d946ef]/5 rounded-full blur-[50px] group-hover:bg-[#d946ef]/15 transition-all duration-700"></div>
+
              <div className="flex justify-between items-center z-10">
                <div className="flex items-center gap-2">
-                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-white/[0.15] to-transparent border border-white/10 flex items-center justify-center backdrop-blur-md shadow-lg">
+                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-white/[0.15] to-transparent border border-white/10 flex items-center justify-center backdrop-blur-md shadow-lg group-hover:scale-110 transition-transform duration-500">
                    <span className="text-sm font-bold bg-clip-text text-transparent bg-gradient-to-br from-white to-white/40">N</span>
                  </div>
                  <span className="text-[14px] font-medium tracking-tight">Nexus<span className="text-[9px] text-white/40 ml-0.5">®</span></span>
                </div>
-               <span className="text-[9px] bg-white text-black px-2 py-0.5 rounded-full font-semibold uppercase shadow-xl">V2.0</span>
+               <span className="text-[9px] bg-white text-black px-2 py-0.5 rounded-full font-semibold uppercase shadow-xl group-hover:bg-indigo-500 group-hover:text-white transition-colors duration-500">V2.0</span>
              </div>
 
              <div className="z-10 py-8">
-               <h3 className="text-2xl font-medium mb-3 tracking-tight">Unified Network Intelligence</h3>
-               <p className="text-[12px] text-white/50 leading-relaxed max-w-[220px]">
+               <h3 className="text-2xl font-medium mb-3 tracking-tight group-hover:translate-x-1 transition-transform duration-500">Unified Network Intelligence</h3>
+               <p className="text-[12px] text-white/50 leading-relaxed max-w-[220px] font-light">
                  Automate your digital presence with high-speed neural links and edge computing infrastructure.
                </p>
              </div>
@@ -82,16 +88,13 @@ export default function Dashboard() {
              <div className="space-y-3 z-10">
                <button className="w-full bg-[#8b5cf6] hover:bg-[#7c3aed] text-white py-2.5 rounded-[14px] text-[13px] font-light transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/20 active:scale-[0.98]">
                  Sync with Network
-                 <Globe size={16} />
+                 <Globe size={16} className="group-hover:rotate-12 transition-transform" />
                </button>
                <button className="w-full bg-white/[0.05] border border-white/[0.05] hover:bg-white/[0.08] text-white/80 py-2.5 rounded-[14px] text-[13px] font-light transition-all flex items-center justify-center gap-2 active:scale-[0.98]">
                  Manual Node Integration
                  <Lock size={14} className="opacity-40" />
                </button>
              </div>
-             
-             {/* Abstract background effect */}
-             <div className="absolute top-1/2 right-[-40px] w-56 h-56 bg-indigo-500/10 rounded-full blur-[80px]"></div>
           </div>
         </div>
 
