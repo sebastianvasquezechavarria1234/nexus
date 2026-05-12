@@ -91,7 +91,6 @@ export default function Sidebar() {
                   style={{ backgroundColor: `${stake.color}20` }}
                 >
                   <Circle size={14} style={{ color: stake.color, fill: stake.color }} className="opacity-80" />
-                  <span className="absolute text-[8px] font-black">{stake.symbol[0]}</span>
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-[11px] font-semibold truncate text-white/50">{stake.name}</p>
