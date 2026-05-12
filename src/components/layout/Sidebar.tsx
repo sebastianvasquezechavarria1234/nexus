@@ -36,7 +36,9 @@ export default function Sidebar() {
       {/* Logo Section - Full Width Border */}
       <div className="pl-6 pr-8 py-5 border-b border-white/5 sticky top-0 bg-[#0a0a0c]/90 backdrop-blur-md z-20">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-black font-medium text-lg shadow-lg">N</div>
+          <div className="w-10 h-10 rounded-[20px] bg-gradient-to-br from-white/[0.15] to-transparent border border-white/10 flex items-center justify-center backdrop-blur-md shadow-xl">
+            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-white to-white/40">N</span>
+          </div>
           <div>
             <div className="text-xl font-medium leading-none">Nexus<span className="text-[10px] align-top text-white/40 ml-0.5">®</span></div>
             <div className="text-[10px] text-white/30 font-medium tracking-tight mt-1">Next-Gen Connectivity</div>

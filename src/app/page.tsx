@@ -64,8 +64,8 @@ export default function Dashboard() {
           <div className="glass p-8 bg-gradient-to-br from-[#4f46e5]/20 via-[#7c3aed]/5 to-transparent relative overflow-hidden flex flex-col justify-between group">
              <div className="flex justify-between items-center z-10">
                <div className="flex items-center gap-2">
-                 <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-lg">
-                   <div className="w-4 h-4 rounded-full border-2 border-black"></div>
+                 <div className="w-8 h-8 rounded-[20px] bg-gradient-to-br from-white/[0.15] to-transparent border border-white/10 flex items-center justify-center backdrop-blur-md shadow-lg">
+                   <span className="text-sm font-bold bg-clip-text text-transparent bg-gradient-to-br from-white to-white/40">N</span>
                  </div>
                  <span className="text-[14px] font-medium tracking-tight">Nexus<span className="text-[9px] text-white/40 ml-0.5">®</span></span>
                </div>
@@ -112,7 +112,7 @@ export default function Dashboard() {
               <div className="flex items-center justify-between">
                 <div className="flex items-start gap-6">
                   <div className="relative">
-                    <div className="w-16 h-16 rounded-[24px] bg-gradient-to-br from-white/[0.08] to-transparent border border-white/10 flex items-center justify-center backdrop-blur-md shadow-2xl">
+                    <div className="w-16 h-16 rounded-[20px] bg-gradient-to-br from-white/[0.08] to-transparent border border-white/10 flex items-center justify-center backdrop-blur-md shadow-2xl">
                       <span className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-white to-white/40">N</span>
                     </div>
                     <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#0a0a0c] border-[3px] border-[#0a0a0c] flex items-center justify-center">
