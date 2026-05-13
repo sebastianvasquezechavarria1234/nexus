@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Search, Bell, Settings, ChevronDown, Plus } from 'lucide-react';
 
 export default function TopBar() {
@@ -10,8 +11,8 @@ export default function TopBar() {
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 p-0.5">
             <div className="w-full h-full rounded-full bg-[#0a0a0c] flex items-center justify-center">
-              <div className="w-8 h-8 rounded-full bg-white/10 overflow-hidden">
-                <img src="/avatar.png" alt="User" className="w-full h-full object-cover" />
+              <div className="w-8 h-8 rounded-full bg-white/10 overflow-hidden relative">
+                <Image src="/avatar.png" alt="User" fill className="object-cover" />
               </div>
             </div>
           </div>

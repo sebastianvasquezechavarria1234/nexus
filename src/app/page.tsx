@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import AssetCard from '@/components/dashboard/AssetCard';
+import NetworkMap from '@/components/dashboard/NetworkMap';
 import { 
   AreaChart, 
   Area, 
@@ -10,16 +11,13 @@ import {
 } from 'recharts';
 import { 
   Clock, 
-  Wallet, 
   RotateCcw, 
   Maximize2, 
   Filter, 
   ChevronDown, 
-  PlayCircle, 
   ArrowUpRight, 
   Share2,
   Lock,
-  Pause,
   ExternalLink,
   Cpu,
   Activity,
@@ -32,6 +30,26 @@ const chartData = [
 ];
 
 export default function Dashboard() {
+  const [throughput, setThroughput] = useState(31.39686);
+  const [logs] = useState([
+    { time: '09:42:11', event: 'Packet routing optimized via Neural Relay NR-X', detail: 'Latency reduced by 4ms', color: 'bg-indigo-500' },
+    { time: '09:41:04', event: 'New node connection established: Edge Link EL-4', detail: 'Bandwidth: 1.2 GB/s', color: 'bg-emerald-500' },
+    { time: '09:38:55', event: 'Security handshake completed: RSA-4096', detail: 'Identity verified', color: 'bg-blue-500' },
+    { time: '09:35:12', event: 'Mainframe Cluster (X-7) auto-scaling triggered', detail: 'Added 2 virtual nodes', color: 'bg-purple-500' },
+    { time: '09:30:00', event: 'Backup synchronization successful', detail: 'All clusters synced', color: 'bg-white/20' },
+  ]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setThroughput(prev => {
+        const change = (Math.random() - 0.5) * 0.001;
+        return prev + change;
+      });
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <DashboardLayout>
       <div className="max-w-[1600px] mx-auto space-y-10 animate-fade-in px-4 pb-12">
@@ -102,6 +120,10 @@ export default function Dashboard() {
 
         {/* Active Staking Detail Section */}
         <div className="glass p-10 relative overflow-hidden -mt-6">
+          {/* Subtle background effects */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+          
           <div className="flex items-center justify-between mb-12">
             <h3 className="text-[12px] font-medium text-white/20 uppercase tracking-[0.2em]">Active Core Infrastructure</h3>
             <div className="flex items-center gap-6 text-white/20">
@@ -163,9 +185,11 @@ export default function Dashboard() {
               <div className="space-y-12">
                 <div className="flex items-end justify-between">
                   <div className="space-y-2">
-                    <p className="text-[11px] text-white/60 font-medium">Real-time Throughput</p>
+                    <p className="text-[11px] text-white/60 font-medium uppercase tracking-widest">Real-time Throughput</p>
                     <div className="flex items-baseline gap-4">
-                      <h1 className="text-[92px] font-medium tracking-[-0.06em] leading-none text-white">31.39686</h1>
+                      <h1 className="text-[92px] font-medium tracking-[-0.06em] leading-none text-white transition-all duration-75 tabular-nums">
+                        {throughput.toFixed(5)}
+                      </h1>
                       <span className="text-lg font-medium text-white/40">Petabytes / s</span>
                     </div>
                   </div>
@@ -281,14 +305,8 @@ export default function Dashboard() {
                 </div>
                 
                 <div className="flex-1 space-y-6 overflow-visible relative">
-                  {[
-                    { time: '09:42:11', event: 'Packet routing optimized via Neural Relay NR-X', detail: 'Latency reduced by 4ms', color: 'bg-indigo-500' },
-                    { time: '09:41:04', event: 'New node connection established: Edge Link EL-4', detail: 'Bandwidth: 1.2 GB/s', color: 'bg-emerald-500' },
-                    { time: '09:38:55', event: 'Security handshake completed: RSA-4096', detail: 'Identity verified', color: 'bg-blue-500' },
-                    { time: '09:35:12', event: 'Mainframe Cluster (X-7) auto-scaling triggered', detail: 'Added 2 virtual nodes', color: 'bg-purple-500' },
-                    { time: '09:30:00', event: 'Backup synchronization successful', detail: 'All clusters synced', color: 'bg-white/20' },
-                  ].map((log, i) => (
-                    <div key={i} className="relative pl-6 pb-2 border-l border-white/5 group last:pb-0">
+                  {logs.map((log, i) => (
+                    <div key={i} className="relative pl-6 pb-2 border-l border-white/5 group last:pb-0 animate-slide-in">
                       <div className={`absolute left-[-3.5px] top-0 w-1.5 h-1.5 rounded-full ${log.color} shadow-[0_0_8px_rgba(255,255,255,0.1)] group-hover:scale-125 transition-transform`}></div>
                       <div className="flex flex-col gap-1.5">
                         <div className="flex items-center justify-between">
@@ -313,6 +331,9 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
+        
+        {/* Network Map Section */}
+        <NetworkMap />
 
         {/* Bottom Metrics Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
