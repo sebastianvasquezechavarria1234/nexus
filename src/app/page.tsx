@@ -64,9 +64,11 @@ export default function Dashboard() {
           <div className="glass p-8 bg-[#111114] relative overflow-hidden flex flex-col justify-between group transition-all duration-500 hover:shadow-[0_0_50px_rgba(139,92,246,0.15)]">
              {/* Dynamic Mesh Gradient Background */}
              <div className="absolute inset-0 bg-gradient-to-br from-[#4f46e5]/20 via-transparent to-transparent opacity-100 transition-opacity duration-500 group-hover:opacity-80"></div>
-             <div className="absolute -top-[20%] -left-[10%] w-[70%] h-[70%] bg-[#8b5cf6]/15 rounded-full blur-[80px] group-hover:bg-[#8b5cf6]/25 transition-all duration-700"></div>
-             <div className="absolute -bottom-[20%] -right-[10%] w-[60%] h-[60%] bg-[#06b6d4]/10 rounded-full blur-[60px] group-hover:bg-[#06b6d4]/20 transition-all duration-700 animate-pulse"></div>
-             <div className="absolute top-1/4 right-0 w-32 h-32 bg-[#d946ef]/5 rounded-full blur-[50px] group-hover:bg-[#d946ef]/15 transition-all duration-700"></div>
+             
+             {/* Intense Blobs from the start */}
+             <div className="absolute -top-[20%] -left-[10%] w-[70%] h-[70%] bg-[#8b5cf6]/25 rounded-full blur-[80px] transition-all duration-700"></div>
+             <div className="absolute -bottom-[20%] -right-[10%] w-[60%] h-[60%] bg-[#d946ef]/20 rounded-full blur-[60px] transition-all duration-700 animate-pulse"></div>
+             <div className="absolute top-1/4 -right-10 w-48 h-48 bg-[#8b5cf6]/20 rounded-full blur-[60px] transition-all duration-700"></div>
 
              <div className="flex justify-between items-center z-10">
                <div className="flex items-center gap-2">
