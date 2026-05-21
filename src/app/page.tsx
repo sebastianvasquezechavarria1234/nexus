@@ -46,7 +46,7 @@ export default function Dashboard() {
         const change = (Math.random() - 0.5) * 0.001;
         return prev + change;
       });
-    }, 1000);
+    }, 360000);
 
     return () => clearInterval(interval);
   }, []);
