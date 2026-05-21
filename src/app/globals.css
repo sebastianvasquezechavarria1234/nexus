@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 @import "tailwindcss";
 
 @theme {
@@ -15,7 +17,7 @@
 
 body {
   @apply bg-[#0a0a0c] text-white antialiased tracking-tight font-thin;
-  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+  font-family: "Google Sans Flex", "Plus Jakarta Sans", system-ui, sans-serif;
 }
 
 /* Ultra-thin for all small text labels and descriptions */

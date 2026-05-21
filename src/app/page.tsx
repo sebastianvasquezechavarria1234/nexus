@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import AssetCard from '@/components/dashboard/AssetCard';
 import NetworkMap from '@/components/dashboard/NetworkMap';
@@ -187,9 +188,7 @@ export default function Dashboard() {
                   <div className="space-y-2">
                     <p className="text-[11px] text-white/60 font-medium uppercase tracking-widest">Real-time Throughput</p>
                     <div className="flex items-baseline gap-4">
-                      <h1 className="text-[92px] font-medium tracking-[-0.06em] leading-none text-white transition-all duration-75 tabular-nums">
-                        {throughput.toFixed(5)}
-                      </h1>
+                      <DigitSlider value={throughput} />
                       <span className="text-lg font-medium text-white/40">Petabytes / s</span>
                     </div>
                   </div>
@@ -368,5 +367,34 @@ export default function Dashboard() {
         </div>
       </div>
     </DashboardLayout>
+  );
+}
+
+function DigitSlider({ value }: { value: number }) {
+  const str = value.toFixed(5);
+  const prevStr = useRef(str);
+
+  useEffect(() => {
+    prevStr.current = str;
+  });
+
+  return (
+    <h1 className="text-[92px] font-medium tracking-[-0.06em] leading-none text-white tabular-nums">
+      {str.split('').map((char, i) => {
+        const changed = prevStr.current[i] !== char;
+        return (
+          <motion.span
+            key={`${i}-${char}`}
+            initial={changed ? { y: -8, opacity: 0 } : {}}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.1, ease: "easeOut" }}
+            className="inline-block text-center"
+            style={{ width: char === '.' ? '0.3em' : '0.55em' }}
+          >
+            {char}
+          </motion.span>
+        );
+      })}
+    </h1>
   );
 }
