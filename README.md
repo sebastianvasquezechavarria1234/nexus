@@ -8,7 +8,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-**Nexus** is an ultra-premium, high-fidelity cybernetic monitoring and neural-routing telemetry dashboard built on top of Next.js and Tailwind CSS v4. It delivers real-time system performance data, distributed mesh network visualization, and high-performance automated node optimization, all encased in a state-of-the-art glassmorphic visual wrapper.
+**Nexus** is an ultra-premium, high-fidelity cybernetic frontend style template and UI component boilerplate built on top of Next.js and Tailwind CSS v4. It was specifically designed and engineered for developers to copy, clone, and study state-of-the-art glassmorphic layouts, futuristic color palettes, fluid typography, and premium dashboard design tokens.
 
 ---
 
@@ -123,5 +123,8 @@ Nexus features a custom glassmorphism design language tailored for terminal/high
 
 ---
 
-## 📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 📄 License & Open-Source Usage
+This project is fully open-source and released under the **MIT License**. 
+
+Anyone is free to clone this repository, copy the CSS classes, reuse the responsive layouts, extract components, or adapt the entire visual design language for their own dashboards and websites without restriction. See the [LICENSE](LICENSE) file for the full legal text.
+
